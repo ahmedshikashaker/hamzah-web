@@ -14,9 +14,12 @@ export function ServicesGrid({ lang, showAll = false }: Props) {
   const localizedServices = getLocalizedServices(lang);
   const list = showAll ? localizedServices : localizedServices.filter((s) => s.featured);
   const messages = getMessages(lang);
+  const sectionClasses = showAll
+    ? "py-20 lg:py-28 bg-[var(--bg-primary)]"
+    : "py-20 lg:py-28 bg-[var(--bg-primary)] border-t border-[var(--border-color)]";
 
   return (
-    <section className="py-20 lg:py-28 bg-[var(--bg-secondary)]">
+    <section className={sectionClasses}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <ScrollReveal animation="fade-up">
