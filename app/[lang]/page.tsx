@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
+import { ProofStrip } from "@/components/sections/ProofStrip";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { WhyHamzah } from "@/components/sections/WhyHamzah";
@@ -31,6 +32,7 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <>
       <Hero lang={locale} />
+      <ProofStrip lang={locale} />
       <TrustedBy lang={locale} />
       <HowItWorks lang={locale} />
       <WhyHamzah lang={locale} />

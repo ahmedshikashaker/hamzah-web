@@ -25,6 +25,19 @@
     "title": "Trusted by innovative companies",
     "subtitle": "From fast-growing startups to established brands, teams rely on Hamzah LLC to deliver with speed and quality."
   },
+  "proofStrip": {
+    "badge": "Proven Outcomes",
+    "title": "Results teams can measure from week one",
+    "subtitle": "A hiring process built for speed, clarity, and long-term fit across product and engineering roles.",
+    "metric1Value": "24h",
+    "metric1Label": "First qualified shortlist",
+    "metric2Value": "98%",
+    "metric2Label": "Successful engagements",
+    "metric3Value": "80+",
+    "metric3Label": "Countries covered",
+    "note": "From role brief to first interview in as little as 2 days.",
+    "cta": "Explore Services"
+  },
   "howItWorks": {
     "badge": "Simple Process",
     "title": "How It Works"
