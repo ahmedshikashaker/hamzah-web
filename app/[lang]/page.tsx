@@ -8,29 +8,37 @@ import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { ProductsGrid } from "@/components/sections/ProductsGrid";
 import { Contact } from "@/components/sections/Contact";
 import { Locale } from "@/lib/i18n/config";
-
-export const metadata: Metadata = {
-  title: "Hire Remote Tech Talent",
-  description: "Over 1,000 technical specialists from more than 80 countries. Find the perfect match for your team.",
-};
+import { getMessages } from "@/lib/i18n/messages";
 
 interface PageProps {
   params: Promise<{ lang: string }>;
 }
 
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = await params;
+  const locale = lang as Locale;
+  const messages = getMessages(locale);
+
+  return {
+    title: messages.hero.headlineAccent,
+    description: messages.hero.subheadline,
+  };
+}
+
 export default async function HomePage({ params }: PageProps) {
   const { lang } = await params;
+  const locale = lang as Locale;
 
   return (
     <>
-      <Hero />
-      <TrustedBy />
-      <HowItWorks />
-      <WhyHamzah />
-      <ServicesGrid lang={lang as Locale} showAll={false} />
-      <ProductsGrid lang={lang as Locale} />
-      <Testimonials />
-      <Contact />
+      <Hero lang={locale} />
+      <TrustedBy lang={locale} />
+      <HowItWorks lang={locale} />
+      <WhyHamzah lang={locale} />
+      <ServicesGrid lang={locale} showAll={false} />
+      <ProductsGrid lang={locale} />
+      <Testimonials lang={locale} />
+      <Contact lang={locale} />
     </>
   );
 }

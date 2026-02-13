@@ -3,13 +3,29 @@ import { CareersContent } from "@/components/sections/CareersContent";
 import { Contact } from "@/components/sections/Contact";
 import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
+import { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
-export const metadata: Metadata = {
-  title: "Careers",
-  description: "Join our team at Hamzah LLC. Discover exciting career opportunities and be part of our growing team of talented professionals.",
-};
+interface PageProps {
+  params: Promise<{ lang: string }>;
+}
 
-export default async function CareersPage() {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = await params;
+  const locale = lang as Locale;
+  const messages = getMessages(locale);
+
+  return {
+    title: messages.careersPage.title,
+    description: messages.careersPage.subtitle,
+  };
+}
+
+export default async function CareersPage({ params }: PageProps) {
+  const { lang } = await params;
+  const locale = lang as Locale;
+  const messages = getMessages(locale);
+
   return (
     <>
       <section className="relative py-20 lg:py-28 bg-[var(--bg-secondary)] overflow-hidden">
@@ -20,25 +36,25 @@ export default async function CareersPage() {
           <div className="text-center max-w-3xl mx-auto">
             <ScrollReveal animation="fade-up">
               <Badge variant="accent" className="mb-4">
-                Join Our Team
+                {messages.careersPage.badge}
               </Badge>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={100}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] mb-4">
-                Build Your Career With Us
+                {messages.careersPage.title}
               </h1>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={200}>
               <p className="text-lg text-[var(--text-secondary)]">
-                Discover exciting career opportunities at Hamzah LLC and be part of our growing team of talented professionals.
+                {messages.careersPage.subtitle}
               </p>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      <CareersContent />
-      <Contact />
+      <CareersContent lang={locale} />
+      <Contact lang={locale} />
     </>
   );
 }

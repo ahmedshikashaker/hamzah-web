@@ -1,19 +1,18 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { products } from "@/lib/content";
+import { products, getLocalizedProducts } from "@/lib/content";
 import { Contact } from "@/components/sections/Contact";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ArrowRightIcon, CheckIcon } from "@/components/ui/icons";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
 interface PageProps {
   params: Promise<{ lang: string; id: string }>;
 }
-
-const getProduct = (id: string) => products.find((product) => product.id === id);
 
 export async function generateStaticParams() {
   const locales: Locale[] = ["en", "ar"];
@@ -21,12 +20,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { id } = await params;
-  const product = getProduct(id);
+  const { lang, id } = await params;
+  const locale = lang as Locale;
+  const messages = getMessages(locale);
+  const product = getLocalizedProducts(locale).find((item) => item.id === id);
 
   if (!product) {
     return {
-      title: "Product Not Found",
+      title: messages.productsPage.title,
     };
   }
 
@@ -39,13 +40,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ProductDetailsPage({ params }: PageProps) {
   const { lang, id } = await params;
   const locale = lang as Locale;
-  const product = getProduct(id);
+  const messages = getMessages(locale);
+  const product = getLocalizedProducts(locale).find((item) => item.id === id);
 
   if (!product) {
     notFound();
   }
 
-  const prefilledMessage = `Hi Hamzah team,\nI want to book a live demo for ${product.title}. Please share your available slots and setup details.`;
+  const prefilledMessage = messages.productDetails.prefilledMessage.replace("{product}", product.title);
 
   return (
     <>
@@ -60,7 +62,7 @@ export default async function ProductDetailsPage({ params }: PageProps) {
               className="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors mb-8"
             >
               <ArrowRightIcon size={16} className="rotate-180" />
-              Back to Products
+              {messages.productDetails.backToProducts}
             </Link>
           </ScrollReveal>
 
@@ -78,10 +80,10 @@ export default async function ProductDetailsPage({ params }: PageProps) {
 
               <div className="flex flex-wrap gap-3 mt-8">
                 <Button href="#book-demo" size="lg" icon={<ArrowRightIcon />}>
-                  Book Demo
+                  {messages.productDetails.bookDemo}
                 </Button>
                 <Button href={`/${locale}/products`} variant="outline" size="lg">
-                  Explore More Products
+                  {messages.productDetails.exploreMore}
                 </Button>
               </div>
             </ScrollReveal>
@@ -89,7 +91,7 @@ export default async function ProductDetailsPage({ params }: PageProps) {
             <ScrollReveal animation="fade-up" delay={120}>
               <div className="card p-6 lg:p-8">
                 <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">
-                  What You Get
+                  {messages.productDetails.whatYouGet}
                 </h2>
                 <div className="space-y-3">
                   {product.features.map((feature) => (
@@ -113,17 +115,17 @@ export default async function ProductDetailsPage({ params }: PageProps) {
             <div className="card p-6 lg:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-wide text-[var(--text-muted)] mb-2">
-                  Personalized Walkthrough
+                  {messages.productDetails.walkthroughBadge}
                 </p>
                 <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-2">
-                  See {product.title} in your own business context
+                  {messages.productDetails.walkthroughTitlePrefix} {product.title} {messages.productDetails.walkthroughTitleSuffix}
                 </h2>
                 <p className="text-[var(--text-secondary)]">
-                  We tailor the demo to your use case, workflows, and team structure.
+                  {messages.productDetails.walkthroughSubtitle}
                 </p>
               </div>
               <Button href="#book-demo" size="md" icon={<ArrowRightIcon />}>
-                Book {product.title} Demo
+                {messages.productDetails.bookProductDemo} {product.title}
               </Button>
             </div>
           </ScrollReveal>
@@ -131,10 +133,11 @@ export default async function ProductDetailsPage({ params }: PageProps) {
       </section>
 
       <Contact
+        lang={locale}
         sectionId="book-demo"
-        badgeText="Book Product Demo"
-        title={`Book a ${product.title} Demo`}
-        subtitle="Share your use case and we will run a focused walkthrough with implementation guidance."
+        badgeText={messages.productDetails.contactBadge}
+        title={`${messages.productDetails.contactTitlePrefix} ${product.title} ${messages.productDetails.contactTitleSuffix}`}
+        subtitle={messages.productDetails.contactSubtitle}
         defaultServiceType="Product Demo"
         defaultMessage={prefilledMessage}
         productName={product.title}

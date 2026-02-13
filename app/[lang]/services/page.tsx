@@ -1,18 +1,35 @@
 import { Metadata } from "next";
-import { services } from "@/lib/content";
+import { getLocalizedServices } from "@/lib/content";
 import { Contact } from "@/components/sections/Contact";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Icon } from "@/components/ui/icons";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { ArrowRightIcon } from "@/components/ui/icons";
+import { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
-export const metadata: Metadata = {
-  title: "Our Services",
-  description: "Comprehensive solutions to drive your business forward - Staff Augmentation, Software Development, UI/UX Design, Cloud & DevOps, and more.",
-};
+interface PageProps {
+  params: Promise<{ lang: string }>;
+}
 
-export default async function ServicesPage() {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = await params;
+  const locale = lang as Locale;
+  const messages = getMessages(locale);
+
+  return {
+    title: messages.servicesPage.title,
+    description: messages.servicesPage.subtitle,
+  };
+}
+
+export default async function ServicesPage({ params }: PageProps) {
+  const { lang } = await params;
+  const locale = lang as Locale;
+  const messages = getMessages(locale);
+  const services = getLocalizedServices(locale);
+
   return (
     <>
       <section className="relative py-20 lg:py-28 bg-[var(--bg-primary)] overflow-hidden">
@@ -23,17 +40,17 @@ export default async function ServicesPage() {
           <div className="text-center mb-14 lg:mb-18">
             <ScrollReveal animation="fade-up">
               <Badge variant="accent" className="mb-4">
-                What We Do
+                {messages.servicesPage.badge}
               </Badge>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={100}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] mb-4">
-                Our Services
+                {messages.servicesPage.title}
               </h1>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={200}>
               <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-                Comprehensive solutions to drive your business forward. From talent acquisition to full-cycle development.
+                {messages.servicesPage.subtitle}
               </p>
             </ScrollReveal>
           </div>
@@ -74,17 +91,17 @@ export default async function ServicesPage() {
           <ScrollReveal animation="fade-up" delay={700}>
             <div className="mt-14 text-center">
               <p className="text-[var(--text-secondary)] mb-5 max-w-md mx-auto">
-                Ready to get started? Contact us today to discuss how we can help transform your business.
+                {messages.servicesPage.ctaText}
               </p>
               <Button href="#contact" size="lg" icon={<ArrowRightIcon />}>
-                Get in Touch
+                {messages.servicesPage.ctaButton}
               </Button>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      <Contact />
+      <Contact lang={locale} />
     </>
   );
 }

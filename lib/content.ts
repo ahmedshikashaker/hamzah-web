@@ -1,3 +1,5 @@
+import { Locale } from "@/lib/i18n/config";
+
 export const siteConfig = {
   name: "Hamzah LLC",
   tagline: "Hire Remote Tech Talent",
@@ -43,14 +45,54 @@ export const hero = {
 };
 
 export const trustedClients = [
-  { name: "Hive Studios", logo: "hive" },
-  { name: "Eva Pharma", logo: "eva" },
-  { name: "Basathalak", logo: "basathalak" },
-  { name: "TaaleemX", logo: "taaleemx" },
-  { name: "Burgan Bank", logo: "burgan" },
-  { name: "Cardix", logo: "cardix" },
-  { name: "Naqood Holding", logo: "naqood" },
-  { name: "KashNow", logo: "kashnow" },
+  {
+    name: "Hive Studios",
+    logoSrc: "/clients/hive-studios.png",
+    logoWidth: 107,
+    logoHeight: 40,
+  },
+  {
+    name: "Eva Pharma",
+    logoSrc: "/clients/eva-pharma.svg",
+    logoWidth: 97,
+    logoHeight: 54,
+  },
+  {
+    name: "Basathalak",
+    logoSrc: "/clients/basathalak.png",
+    logoWidth: 128,
+    logoHeight: 128,
+  },
+  {
+    name: "TaaleemX",
+    logoSrc: "/clients/taaleemx.svg",
+    logoWidth: 88,
+    logoHeight: 123,
+  },
+  {
+    name: "Burgan Bank",
+    logoSrc: "/clients/burgan-bank.webp",
+    logoWidth: 460,
+    logoHeight: 460,
+  },
+  {
+    name: "Cardix",
+    logoSrc: "/clients/cardix.png",
+    logoWidth: 1280,
+    logoHeight: 575,
+  },
+  {
+    name: "Naqood Holding",
+    logoSrc: "/clients/naqood-holding.png",
+    logoWidth: 146,
+    logoHeight: 43,
+  },
+  {
+    name: "KashNow",
+    logoSrc: "/clients/kashnow.svg",
+    logoWidth: 75,
+    logoHeight: 60,
+  },
 ];
 
 export const howItWorks = [
@@ -276,3 +318,175 @@ export const serviceTypes = [
   "AI & Automation",
   "Other",
 ];
+
+const arHowItWorks = [
+  {
+    title: "شارك احتياجاتك",
+    description: "أخبرنا عن مشروعك والتقنيات المطلوبة وثقافة الفريق والجدول الزمني لنفهم احتياجك بدقة.",
+  },
+  {
+    title: "احصل على ترشيحات خلال 24 ساعة",
+    description: "نرشّح لك أفضل المطابقات وفق المهارات والخبرة وتوافق المنطقة الزمنية.",
+  },
+  {
+    title: "قابل أفضل المرشحين",
+    description: "راجع الملفات الشخصية التفصيلية وقابل المرشحين الأنسب لاختيار أفضل إضافة لفريقك.",
+  },
+  {
+    title: "وسّع فريقك بثقة",
+    description: "ابدأ العمل فوراً مع دعم مستمر في العقود والمدفوعات والمتابعة.",
+  },
+];
+
+const arWhyHamzah = [
+  {
+    title: "آلية تقييم دقيقة",
+    description: "كل مرشح يمر باختبارات تقنية ومراجعات عملية وتقييم للمهارات الشخصية.",
+    statLabel: "معدل القبول",
+  },
+  {
+    title: "توافق المنطقة الزمنية",
+    description: "اعمل مع مواهب متاحة ضمن ساعات عملك لتعاون أسرع وأكثر فعالية.",
+    statLabel: "ساعات تداخل",
+  },
+  {
+    title: "تسعير واضح",
+    description: "تكلفة شفافة بدون رسوم مخفية، مع وضوح كامل منذ اليوم الأول.",
+    statLabel: "رسوم مخفية",
+  },
+  {
+    title: "مرونة التعاقد",
+    description: "وسع أو قلص فريقك حسب الحاجة بعقود مرنة وبدون التزامات طويلة.",
+    statLabel: "يوم إشعار",
+  },
+  {
+    title: "مدير نجاح مخصص",
+    description: "مدير حساب مخصص يدعمك خلال الإعداد ويعالج أي تحديات تشغيلية.",
+    statLabel: "دعم",
+  },
+  {
+    title: "شبكة مواهب عالمية",
+    description: "وصول لمهندسين موثوقين من أكثر من 80 دولة بخبرات متنوعة.",
+    statLabel: "دولة",
+  },
+];
+
+const arServicesById: Record<string, { title: string; description: string }> = {
+  "staff-augmentation": {
+    title: "تعزيز الفريق",
+    description: "وسّع فريقك بمطورين عن بُعد تم التحقق منهم ويتكاملون بسرعة مع طريقة عملك.",
+  },
+  "software-development": {
+    title: "تطوير البرمجيات",
+    description: "تطوير متكامل من الفكرة حتى الإطلاق للتطبيقات والمواقع والحلول المؤسسية.",
+  },
+  "ui-ux-design": {
+    title: "تصميم UI/UX",
+    description: "تصميم يركز على المستخدم من البحث حتى واجهات دقيقة تعزز تجربة العملاء.",
+  },
+  "cloud-devops": {
+    title: "السحابة وDevOps",
+    description: "بنية سحابية آمنة وقابلة للتوسع مع أتمتة النشر والمراقبة وتحسين التكلفة.",
+  },
+  "ai-automation": {
+    title: "الذكاء الاصطناعي والأتمتة",
+    description: "حلول ذكية لتبسيط العمليات ورفع الإنتاجية وفتح فرص نمو جديدة.",
+  },
+  "branding": {
+    title: "الهوية والعلامة التجارية",
+    description: "بناء هوية قوية تميز علامتك التجارية وترسّخ حضورها في السوق.",
+  },
+  "qa": {
+    title: "ضمان الجودة",
+    description: "اختبارات شاملة لضمان جودة المنتج واستقراره قبل الوصول للمستخدم النهائي.",
+  },
+  "consultancy": {
+    title: "الاستشارات التقنية",
+    description: "استشارات عملية لاتخاذ قرارات تقنية صحيحة في البنية والتوسع والتحول.",
+  },
+};
+
+const arProductsById: Record<string, { title: string; category: string; description: string; features: string[] }> = {
+  "loyalty-cards": {
+    title: "بطاقات الولاء",
+    category: "الولاء",
+    description: "منصة متقدمة لإدارة الولاء مع تكامل Apple Wallet لبناء علاقات مستدامة مع العملاء.",
+    features: ["إدارة برامج الولاء", "تتبع العملاء والملفات الشخصية", "نقاط ومكافآت", "تكامل Apple Wallet"],
+  },
+  hrms: {
+    title: "نظام الموارد البشرية",
+    category: "الموارد البشرية",
+    description: "نظام شامل لإدارة الموارد البشرية يبسّط العمليات ويرفع كفاءة فرق العمل.",
+    features: ["إدارة الموظفين", "التوظيف وتهيئة الموظفين", "الحضور وتتبع الوقت", "تكامل الرواتب"],
+  },
+  crm: {
+    title: "Hamzah CRM",
+    category: "إدارة العملاء",
+    description: "نظام CRM مؤسسي للشركات بمختلف أحجامها لتنظيم المبيعات وتحسين الإنتاجية.",
+    features: ["إدارة العملاء المحتملين والفرص", "إدارة جهات الاتصال والعملاء", "تتبع الأنشطة", "أتمتة المبيعات"],
+  },
+  lms: {
+    title: "منصة إدارة التعلم",
+    category: "التعليم",
+    description: "حل متكامل لإنشاء المحتوى التعليمي وتقديمه وقياس التقدم والمتابعة.",
+    features: ["دورات عبر الإنترنت", "محتوى مسجل", "اختبارات وتقييمات", "تتبع التقدم"],
+  },
+};
+
+const arTestimonials = [
+  {
+    quote: "غيّرت Hamzah LLC طريقة عمل فريق التطوير لدينا. وجدنا مطورين مميزين اندمجوا بسرعة رغم العمل عن بُعد.",
+  },
+  {
+    quote: "المواهب التي حصلنا عليها فاقت التوقعات. آلية المطابقة وفرت علينا شهوراً من جهود التوظيف.",
+  },
+];
+
+const arCareersBenefits = [
+  {
+    title: "نمو مهني",
+    description: "مسارات نمو واضحة مع تطوير مهارات وإرشاد وفرص تقدم حقيقية.",
+  },
+  {
+    title: "ثقافة عمل عن بُعد",
+    description: "مرونة في العمل من أي مكان مع توازن أفضل بين الحياة والعمل.",
+  },
+  {
+    title: "مشاريع عالمية",
+    description: "فرصة للعمل على مشاريع مؤثرة مع شركات مبتكرة في قطاعات متنوعة.",
+  },
+  {
+    title: "تعويضات تنافسية",
+    description: "مكافآت عادلة تعكس خبرتك وقيمة تأثيرك في الفريق.",
+  },
+];
+
+export function getLocalizedHowItWorks(lang: Locale) {
+  if (lang !== "ar") return howItWorks;
+  return howItWorks.map((item, index) => ({ ...item, ...arHowItWorks[index] }));
+}
+
+export function getLocalizedWhyHamzah(lang: Locale) {
+  if (lang !== "ar") return whyHamzah;
+  return whyHamzah.map((item, index) => ({ ...item, ...arWhyHamzah[index] }));
+}
+
+export function getLocalizedServices(lang: Locale) {
+  if (lang !== "ar") return services;
+  return services.map((item) => ({ ...item, ...arServicesById[item.id] }));
+}
+
+export function getLocalizedProducts(lang: Locale) {
+  if (lang !== "ar") return products;
+  return products.map((item) => ({ ...item, ...arProductsById[item.id] }));
+}
+
+export function getLocalizedTestimonials(lang: Locale) {
+  if (lang !== "ar") return testimonials;
+  return testimonials.map((item, index) => ({ ...item, ...arTestimonials[index] }));
+}
+
+export function getLocalizedCareersBenefits(lang: Locale) {
+  if (lang !== "ar") return careersBenefits;
+  return careersBenefits.map((item, index) => ({ ...item, ...arCareersBenefits[index] }));
+}

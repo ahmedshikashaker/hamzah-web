@@ -1,6 +1,8 @@
-import { howItWorks } from "@/lib/content";
+import { getLocalizedHowItWorks } from "@/lib/content";
 import { Icon } from "@/components/ui/icons";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
+import { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
 const iconMap: Record<string, string> = {
   clipboard: "clipboard",
@@ -9,23 +11,30 @@ const iconMap: Record<string, string> = {
   rocket: "rocket",
 };
 
-export function HowItWorks() {
+interface HowItWorksProps {
+  lang: Locale;
+}
+
+export function HowItWorks({ lang }: HowItWorksProps) {
+  const messages = getMessages(lang);
+  const steps = getLocalizedHowItWorks(lang);
+
   return (
     <section id="how-it-works" className="py-20 lg:py-28 bg-[var(--bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <ScrollReveal animation="fade-up">
-            <span className="badge mb-4">Simple Process</span>
+            <span className="badge mb-4">{messages.howItWorks.badge}</span>
           </ScrollReveal>
           <ScrollReveal animation="fade-up" delay={100}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
-              How It Works
+              {messages.howItWorks.title}
             </h2>
           </ScrollReveal>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {howItWorks.map((step, i) => (
+          {steps.map((step, i) => (
             <ScrollReveal key={i} animation="fade-up" delay={i * 80 + 200}>
               <div className="text-center group">
                 <div className="relative inline-block mb-6">

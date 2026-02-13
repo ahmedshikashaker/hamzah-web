@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { siteConfig, navigation } from "@/lib/content";
+import { siteConfig } from "@/lib/content";
 import { LinkedInIcon, BehanceIcon, MailIcon, PhoneIcon, MapPinIcon, ArrowRightIcon } from "@/components/ui/icons";
 import { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 import { Button } from "@/components/ui/Button";
 import Logo from "@/components/ui/Logo";
 
@@ -12,6 +13,13 @@ interface FooterProps {
 export function Footer({ lang }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const localizedContactHref = `/${lang}#contact`;
+  const messages = getMessages(lang);
+  const navItems = [
+    { href: "/", label: messages.navigation.home },
+    { href: "/products", label: messages.navigation.products },
+    { href: "/services", label: messages.navigation.services },
+    { href: "/careers", label: messages.navigation.careers },
+  ];
 
   return (
     <footer className="relative overflow-hidden border-t border-[var(--border-color)] bg-[var(--bg-tertiary)]">
@@ -24,21 +32,21 @@ export function Footer({ lang }: FooterProps) {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] mb-3">
-                Ready To Build
+                {messages.footer.ctaBadge}
               </p>
               <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] mb-2">
-                Build your product with a team that ships fast and scales cleanly
+                {messages.footer.ctaTitle}
               </h2>
               <p className="text-sm sm:text-base text-[var(--text-secondary)]">
-                Tell us your goals and we will map the right talent, timeline, and delivery model for your business.
+                {messages.footer.ctaSubtitle}
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Button href={localizedContactHref} size="md" icon={<ArrowRightIcon />}>
-                Book Consultation
+                {messages.footer.ctaPrimary}
               </Button>
               <Button href={`/${lang}/products`} variant="outline" size="md">
-                Explore Products
+                {messages.footer.ctaSecondary}
               </Button>
             </div>
           </div>
@@ -53,18 +61,18 @@ export function Footer({ lang }: FooterProps) {
               </span>
             </Link>
             <p className="mt-5 text-[var(--text-secondary)] max-w-md leading-relaxed text-sm">
-              {siteConfig.description}
+              {messages.footer.tagline}
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2">
               <span className="rounded-full border border-[var(--border-color)] bg-[var(--bg-secondary)] px-3 py-1.5 text-xs font-medium text-[var(--text-muted)]">
-                1,000+ Specialists
+                {messages.footer.stat1}
               </span>
               <span className="rounded-full border border-[var(--border-color)] bg-[var(--bg-secondary)] px-3 py-1.5 text-xs font-medium text-[var(--text-muted)]">
-                24h First Match
+                {messages.footer.stat2}
               </span>
               <span className="rounded-full border border-[var(--border-color)] bg-[var(--bg-secondary)] px-3 py-1.5 text-xs font-medium text-[var(--text-muted)]">
-                80+ Countries
+                {messages.footer.stat3}
               </span>
             </div>
 
@@ -92,10 +100,10 @@ export function Footer({ lang }: FooterProps) {
 
           <div className="lg:col-span-3">
             <h3 className="text-xs font-semibold text-[var(--text-primary)] uppercase tracking-[0.16em] mb-5">
-              Quick Links
+              {messages.footer.quickLinks}
             </h3>
             <ul className="space-y-3">
-              {navigation.map((item) => (
+              {navItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={`/${lang}${item.href === "/" ? "" : item.href}`}
@@ -111,7 +119,7 @@ export function Footer({ lang }: FooterProps) {
 
           <div className="lg:col-span-4">
             <h3 className="text-xs font-semibold text-[var(--text-primary)] uppercase tracking-[0.16em] mb-5">
-              Contact Us
+              {messages.footer.contactUs}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -146,7 +154,7 @@ export function Footer({ lang }: FooterProps) {
 
             <div className="mt-6">
               <Button href={localizedContactHref} variant="outline" size="sm">
-                Get in Touch
+                {messages.footer.getInTouch}
               </Button>
             </div>
           </div>
@@ -155,14 +163,14 @@ export function Footer({ lang }: FooterProps) {
         <div className="mt-12 pt-6 border-t border-[var(--border-color)]">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <p className="text-xs text-[var(--text-muted)]">
-              &copy; {currentYear} {siteConfig.name}. All rights reserved.
+              &copy; {currentYear} {siteConfig.name}. {messages.footer.allRightsReserved}
             </p>
             <div className="flex items-center gap-5 text-xs text-[var(--text-muted)]">
               <Link href={`/${lang}/privacy`} className="hover:text-[var(--accent)] transition-colors">
-                Privacy Policy
+                {messages.footer.privacyPolicy}
               </Link>
               <Link href={`/${lang}/terms`} className="hover:text-[var(--accent)] transition-colors">
-                Terms of Service
+                {messages.footer.termsOfService}
               </Link>
             </div>
           </div>

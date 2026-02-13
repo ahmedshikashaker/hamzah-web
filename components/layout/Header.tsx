@@ -5,8 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { MenuIcon, XIcon, SunIcon, MoonIcon } from "@/components/ui/icons";
-import { navigation, siteConfig } from "@/lib/content";
+import { siteConfig } from "@/lib/content";
 import { locales, localeNames, Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 import Logo from "@/components/ui/Logo";
 
 interface HeaderProps {
@@ -17,6 +18,13 @@ export function Header({ lang }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const messages = getMessages(lang);
+  const navItems = [
+    { href: "/", label: messages.navigation.home },
+    { href: "/products", label: messages.navigation.products },
+    { href: "/services", label: messages.navigation.services },
+    { href: "/careers", label: messages.navigation.careers },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -45,6 +53,7 @@ export function Header({ lang }: HeaderProps) {
 
   const getHref = (href: string) => `/${lang}${href === "/" ? "" : href}`;
   const switchLang = (l: Locale) => pathname?.replace(`/${lang}`, `/${l}`) || `/${l}`;
+  const contactHref = `/${lang}#contact`;
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass" : "bg-transparent"}`}>
@@ -58,7 +67,7 @@ export function Header({ lang }: HeaderProps) {
           </Link>
 
           <div className="hidden lg:flex items-center gap-1">
-            {navigation.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={getHref(item.href)}
@@ -99,8 +108,8 @@ export function Header({ lang }: HeaderProps) {
               ))}
             </div>
 
-            <Button href="#contact" size="sm" className="ml-2">
-              Hire Talent
+            <Button href={contactHref} size="sm" className="ml-2">
+              {messages.navigation.hireTalent}
             </Button>
 
             <button
@@ -115,7 +124,7 @@ export function Header({ lang }: HeaderProps) {
         {mobileMenuOpen && (
           <div className="lg:hidden py-4 bg-[var(--bg-elevated)] rounded-2xl mt-2 shadow-xl border border-[var(--border-color)] animate-fade-up">
             <div className="flex flex-col px-2 gap-1">
-              {navigation.map((item) => (
+              {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={getHref(item.href)}
@@ -131,7 +140,7 @@ export function Header({ lang }: HeaderProps) {
               ))}
               <div className="flex items-center justify-between px-4 py-3 mt-2 border-t border-[var(--border-color)]">
                 <button onClick={toggleTheme} className="text-sm text-[var(--text-muted)]">
-                  Toggle Theme
+                  {messages.navigation.toggleTheme}
                 </button>
                 <div className="flex items-center gap-0.5 p-1 rounded-lg bg-[var(--bg-tertiary)]">
                   {locales.map((l) => (

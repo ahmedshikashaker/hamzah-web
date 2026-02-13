@@ -1,27 +1,30 @@
 import Link from "next/link";
-import { services } from "@/lib/content";
+import { getLocalizedServices } from "@/lib/content";
 import { Icon } from "@/components/ui/icons";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 import { ArrowRightIcon } from "@/components/ui/icons";
 
 interface Props { lang: Locale; showAll?: boolean; }
 
 export function ServicesGrid({ lang, showAll = false }: Props) {
-  const list = showAll ? services : services.filter((s) => s.featured);
+  const localizedServices = getLocalizedServices(lang);
+  const list = showAll ? localizedServices : localizedServices.filter((s) => s.featured);
+  const messages = getMessages(lang);
 
   return (
     <section className="py-20 lg:py-28 bg-[var(--bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <ScrollReveal animation="fade-up">
-            <span className="badge mb-4">Our Services</span>
+            <span className="badge mb-4">{messages.servicesSection.badge}</span>
           </ScrollReveal>
           <ScrollReveal animation="fade-up" delay={100}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
-              What We Offer
+              {messages.servicesSection.title}
             </h2>
           </ScrollReveal>
         </div>
@@ -53,7 +56,7 @@ export function ServicesGrid({ lang, showAll = false }: Props) {
           <ScrollReveal animation="fade-up" delay={500}>
             <div className="mt-10 text-center">
               <Button href={"/" + lang + "/services"} variant="outline" size="lg" icon={<ArrowRightIcon />}>
-                View All Services
+                {messages.servicesSection.viewAll}
               </Button>
             </div>
           </ScrollReveal>

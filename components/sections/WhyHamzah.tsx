@@ -1,24 +1,33 @@
-import { whyHamzah } from "@/lib/content";
+import { getLocalizedWhyHamzah } from "@/lib/content";
 import { Icon } from "@/components/ui/icons";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
+import { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
-export function WhyHamzah() {
+interface WhyHamzahProps {
+  lang: Locale;
+}
+
+export function WhyHamzah({ lang }: WhyHamzahProps) {
+  const messages = getMessages(lang);
+  const items = getLocalizedWhyHamzah(lang);
+
   return (
     <section className="py-20 lg:py-28 bg-[var(--bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <ScrollReveal animation="fade-up">
-            <span className="badge mb-4">Why Choose Us</span>
+            <span className="badge mb-4">{messages.whyHamzah.badge}</span>
           </ScrollReveal>
           <ScrollReveal animation="fade-up" delay={100}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
-              Why Hamzah LLC
+              {messages.whyHamzah.title}
             </h2>
           </ScrollReveal>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {whyHamzah.map((item, i) => (
+          {items.map((item, i) => (
             <ScrollReveal key={i} animation="fade-up" delay={i * 60 + 200}>
               <div className="card p-6 group">
                 <div className="flex items-start justify-between mb-4">

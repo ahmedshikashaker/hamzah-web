@@ -1,24 +1,33 @@
 import { Metadata } from "next";
-import { products } from "@/lib/content";
+import { getLocalizedProducts } from "@/lib/content";
 import { Contact } from "@/components/sections/Contact";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { ArrowRightIcon, CheckIcon } from "@/components/ui/icons";
 import { Locale } from "@/lib/i18n/config";
-
-export const metadata: Metadata = {
-  title: "Our Products",
-  description: "Discover our premium product range - Loyalty Cards, HRMS, CRM, and LMS designed to meet your business needs.",
-};
+import { getMessages } from "@/lib/i18n/messages";
 
 interface PageProps {
   params: Promise<{ lang: string }>;
 }
 
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { lang } = await params;
+  const locale = lang as Locale;
+  const messages = getMessages(locale);
+
+  return {
+    title: messages.productsPage.title,
+    description: messages.productsPage.subtitle,
+  };
+}
+
 export default async function ProductsPage({ params }: PageProps) {
   const { lang } = await params;
   const locale = lang as Locale;
+  const messages = getMessages(locale);
+  const products = getLocalizedProducts(locale);
 
   return (
     <>
@@ -31,17 +40,17 @@ export default async function ProductsPage({ params }: PageProps) {
           <div className="text-center mb-14 lg:mb-16">
             <ScrollReveal animation="fade-up">
               <Badge variant="accent" className="mb-4">
-                Software Products
+                {messages.productsPage.badge}
               </Badge>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={100}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] mb-4">
-                Our Products
+                {messages.productsPage.title}
               </h1>
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={200}>
               <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-                Production-ready platforms for retention, people operations, sales, and education.
+                {messages.productsPage.subtitle}
               </p>
             </ScrollReveal>
           </div>
@@ -77,10 +86,10 @@ export default async function ProductsPage({ params }: PageProps) {
 
                   <div className="mt-auto flex flex-wrap gap-3 pt-2">
                     <Button href={`/${locale}/products/${product.id}`} variant="outline" size="sm" icon={<ArrowRightIcon />}>
-                      View Details
+                      {messages.productsSection.viewDetails}
                     </Button>
                     <Button href={`/${locale}/products/${product.id}#book-demo`} variant="ghost" size="sm">
-                      Book Demo
+                      {messages.productsSection.bookDemo}
                     </Button>
                   </div>
                 </div>
@@ -91,9 +100,10 @@ export default async function ProductsPage({ params }: PageProps) {
       </section>
 
       <Contact
-        badgeText="Book Product Demo"
-        title="Need Help Choosing The Right Product?"
-        subtitle="Tell us what you need and we will recommend the best fit, then run a focused product walkthrough."
+        lang={locale}
+        badgeText={messages.productsPage.contactBadge}
+        title={messages.productsPage.contactTitle}
+        subtitle={messages.productsPage.contactSubtitle}
         defaultServiceType="Product Demo"
       />
     </>

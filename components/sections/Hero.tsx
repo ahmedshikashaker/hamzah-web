@@ -5,6 +5,8 @@ import { hero } from "@/lib/content";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { CountUp } from "@/components/effects/CountUp";
+import { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
 function PlayIcon({ className }: { className?: string }) {
   return (
@@ -14,7 +16,28 @@ function PlayIcon({ className }: { className?: string }) {
   );
 }
 
-export function Hero() {
+interface HeroProps {
+  lang: Locale;
+}
+
+export function Hero({ lang }: HeroProps) {
+  const messages = getMessages(lang);
+
+  const heroContent = {
+    badge: messages.hero.badge,
+    headline: messages.hero.headline,
+    headlineAccent: messages.hero.headlineAccent,
+    subheadline: messages.hero.subheadline,
+    primaryCta: { label: messages.hero.startHiring, href: hero.primaryCta.href },
+    secondaryCta: { label: messages.hero.howItWorks, href: hero.secondaryCta.href },
+    stats: [
+      { value: hero.stats[0]?.value ?? "1000+", label: messages.hero.stats.techSpecialists },
+      { value: hero.stats[1]?.value ?? "80+", label: messages.hero.stats.countries },
+      { value: hero.stats[2]?.value ?? "24h", label: messages.hero.stats.firstMatch },
+      { value: hero.stats[3]?.value ?? "98%", label: messages.hero.stats.successRate },
+    ],
+  };
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="absolute inset-0 bg-[var(--bg-primary)]" />
@@ -31,38 +54,38 @@ export function Hero() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4A1F6E] dark:bg-[#FFB951] opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4A1F6E] dark:bg-[#FFB951]" />
                 </span>
-                {hero.badge}
+                {heroContent.badge}
               </div>
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" delay={100}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-                <span className="text-[var(--text-primary)]">{hero.headline}</span>
+                <span className="text-[var(--text-primary)]">{heroContent.headline}</span>
                 <br />
-                <span className="text-gradient">{hero.headlineAccent}</span>
+                <span className="text-gradient">{heroContent.headlineAccent}</span>
               </h1>
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" delay={200}>
               <p className="text-lg sm:text-xl text-[var(--text-secondary)] mb-8 leading-relaxed">
-                {hero.subheadline}
+                {heroContent.subheadline}
               </p>
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" delay={300}>
               <div className="flex flex-wrap gap-4 mb-10">
                 <Button href={hero.primaryCta.href} size="lg" icon={<ArrowRightIcon />}>
-                  {hero.primaryCta.label}
+                  {heroContent.primaryCta.label}
                 </Button>
                 <Button href={hero.secondaryCta.href} variant="outline" size="lg" icon={<PlayIcon />}>
-                  {hero.secondaryCta.label}
+                  {heroContent.secondaryCta.label}
                 </Button>
               </div>
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" delay={400}>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
-                {hero.stats.map((stat, i) => (
+                {heroContent.stats.map((stat, i) => (
                   <div key={i} className="text-center sm:text-left">
                     <div className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] counter">
                       {stat.value.includes("+") ? (

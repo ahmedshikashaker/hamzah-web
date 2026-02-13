@@ -17,12 +17,13 @@ interface LayoutProps {
 export default async function LangLayout({ children, params }: LayoutProps) {
   const { lang } = await params;
   const locale = lang as Locale;
+  const direction = locale === "ar" ? "rtl" : "ltr";
 
   return (
-    <>
+    <div dir={direction} lang={locale}>
       <Header lang={locale} />
       <main>{children}</main>
       <Footer lang={locale} />
-    </>
+    </div>
   );
 }

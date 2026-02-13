@@ -3,63 +3,164 @@
     "home": "Home",
     "products": "Products",
     "services": "Services",
-    "careers": "Careers"
+    "careers": "Careers",
+    "hireTalent": "Hire Talent",
+    "toggleTheme": "Toggle Theme"
   },
   "hero": {
-    "headline": "Hire Remote Tech Talent",
-    "subheadline": "Over 1,000 technical specialists from more than 80 countries. Find the perfect match for your team—fast.",
-    "getStarted": "Get Started",
-    "learnMore": "Our Services"
+    "badge": "Trusted by 100+ Companies",
+    "headline": "Build Your Dream Team with",
+    "headlineAccent": "Elite Remote Talent",
+    "subheadline": "Access 1,000+ pre-vetted engineers from 80+ countries. Scale faster with talent that matches your time zone, tech stack, and culture.",
+    "startHiring": "Start Hiring",
+    "howItWorks": "How It Works",
+    "stats": {
+      "techSpecialists": "Tech Specialists",
+      "countries": "Countries",
+      "firstMatch": "First Match",
+      "successRate": "Success Rate"
+    }
   },
-  "trustedBy": "Trusted by leading companies",
+  "trustedBy": {
+    "title": "Trusted by innovative companies",
+    "subtitle": "From fast-growing startups to established brands, teams rely on Hamzah LLC to deliver with speed and quality."
+  },
   "howItWorks": {
-    "title": "How It Works",
-    "subtitle": "Our streamlined process helps you find the perfect tech talent for your needs."
+    "badge": "Simple Process",
+    "title": "How It Works"
   },
   "whyHamzah": {
-    "title": "Why Hamzah LLC",
-    "subtitle": "What sets us apart in the remote talent space."
+    "badge": "Why Choose Us",
+    "title": "Why Hamzah LLC"
   },
-  "testimonials": {
-    "title": "What Our Clients Say",
-    "subtitle": "Hear from companies that have found their perfect tech match with Hamzah LLC."
+  "servicesSection": {
+    "badge": "Our Services",
+    "title": "What We Offer",
+    "viewAll": "View All Services"
   },
-  "contact": {
-    "title": "Ready to find your tech match?",
-    "subtitle": "Fill out the form, and our team will get back to you within 24 hours to discuss your needs.",
-    "fullName": "Full Name",
-    "email": "Email Address",
-    "company": "Company Name",
-    "serviceType": "Service Type",
-    "selectService": "Select a service...",
-    "message": "Message",
-    "submit": "Submit",
-    "success": "Thank you! We'll be in touch within 24 hours."
-  },
-  "services": {
-    "title": "Our Services",
-    "subtitle": "Comprehensive solutions to drive your business forward",
-    "cta": "Get in Touch"
-  },
-  "products": {
+  "productsSection": {
+    "badge": "Products",
     "title": "Our Products",
-    "subtitle": "Discover our premium product range designed to meet your needs",
     "viewDetails": "View Details",
     "bookDemo": "Book Demo"
   },
-  "careers": {
-    "title": "Join Our Team",
-    "subtitle": "Discover exciting career opportunities at Hamzah LLC and be part of our growing team of talented professionals.",
-    "searchPlaceholder": "Search for jobs...",
-    "noJobs": "No jobs found",
-    "noJobsMessage": "We don't have any open positions at the moment. Please check back later.",
-    "whyJoin": "Why Join Hamzah LLC?",
-    "whyJoinSubtitle": "We offer a dynamic work environment with numerous benefits and opportunities for professional growth."
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "What Our Clients Say"
+  },
+  "contact": {
+    "badge": "Get Started",
+    "title": "Ready to Scale Your Team?",
+    "subtitle": "",
+    "infoTitle": "Contact Information",
+    "followUs": "Follow Us",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "fullName": "Full Name",
+    "emailLabel": "Email",
+    "company": "Company",
+    "serviceType": "Service Type",
+    "select": "Select...",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your project...",
+    "sendMessage": "Send Message",
+    "requestProductDemo": "Request Product Demo",
+    "sentTitle": "Message Sent!",
+    "sentBody": "We will get back to you within 24 hours.",
+    "sentBodyProduct": "Our product team will contact you with demo slots shortly.",
+    "bookingFor": "Booking demo for",
+    "serviceOptions": [
+      {
+        "value": "Product Demo",
+        "label": "Product Demo"
+      },
+      {
+        "value": "Staff Augmentation",
+        "label": "Staff Augmentation"
+      },
+      {
+        "value": "Software Development",
+        "label": "Software Development"
+      },
+      {
+        "value": "UI/UX Design",
+        "label": "UI/UX Design"
+      },
+      {
+        "value": "Cloud & DevOps",
+        "label": "Cloud & DevOps"
+      },
+      {
+        "value": "AI & Automation",
+        "label": "AI & Automation"
+      },
+      {
+        "value": "Other",
+        "label": "Other"
+      }
+    ]
+  },
+  "servicesPage": {
+    "badge": "What We Do",
+    "title": "Our Services",
+    "subtitle": "Comprehensive solutions to drive your business forward. From talent acquisition to full-cycle development.",
+    "ctaText": "Ready to get started? Contact us today to discuss how we can help transform your business.",
+    "ctaButton": "Get in Touch"
+  },
+  "productsPage": {
+    "badge": "Software Products",
+    "title": "Our Products",
+    "subtitle": "Production-ready platforms for retention, people operations, sales, and education.",
+    "contactBadge": "Book Product Demo",
+    "contactTitle": "Need Help Choosing The Right Product?",
+    "contactSubtitle": "Tell us what you need and we will recommend the best fit, then run a focused product walkthrough."
+  },
+  "productDetails": {
+    "backToProducts": "Back to Products",
+    "bookDemo": "Book Demo",
+    "exploreMore": "Explore More Products",
+    "whatYouGet": "What You Get",
+    "walkthroughBadge": "Personalized Walkthrough",
+    "walkthroughTitlePrefix": "See",
+    "walkthroughTitleSuffix": "in your own business context",
+    "walkthroughSubtitle": "We tailor the demo to your use case, workflows, and team structure.",
+    "bookProductDemo": "Book",
+    "contactBadge": "Book Product Demo",
+    "contactTitlePrefix": "Book a",
+    "contactTitleSuffix": "Demo",
+    "contactSubtitle": "Share your use case and we will run a focused walkthrough with implementation guidance.",
+    "prefilledMessage": "Hi Hamzah team,\nI want to book a live demo for {product}. Please share your available slots and setup details."
+  },
+  "careersPage": {
+    "badge": "Join Our Team",
+    "title": "Build Your Career With Us",
+    "subtitle": "Discover exciting career opportunities at Hamzah LLC and be part of our growing team of talented professionals."
+  },
+  "careersContent": {
+    "openPositionsBadge": "Open Positions",
+    "currentOpenings": "Current Openings",
+    "searchPlaceholder": "Search jobs...",
+    "noOpenPositions": "No open positions",
+    "noOpenPositionsMsg": "Check back later or send us your resume.",
+    "whyJoinBadge": "Why Join Us",
+    "whyJoinTitle": "Why Hamzah LLC?"
   },
   "footer": {
-    "tagline": "Hamzah LLC connects companies with top tech talent from around the world, making remote hiring simple and effective.",
+    "ctaBadge": "Ready To Build",
+    "ctaTitle": "Build your product with a team that ships fast and scales cleanly",
+    "ctaSubtitle": "Tell us your goals and we will map the right talent, timeline, and delivery model for your business.",
+    "ctaPrimary": "Book Consultation",
+    "ctaSecondary": "Explore Products",
+    "stat1": "1,000+ Specialists",
+    "stat2": "24h First Match",
+    "stat3": "80+ Countries",
     "quickLinks": "Quick Links",
     "contactUs": "Contact Us",
-    "allRightsReserved": "All rights reserved."
+    "getInTouch": "Get in Touch",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "allRightsReserved": "All rights reserved.",
+    "tagline": "Hamzah LLC connects companies with top tech talent from around the world, making remote hiring simple and effective."
   }
 }

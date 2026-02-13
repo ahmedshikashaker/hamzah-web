@@ -1,29 +1,33 @@
-import { products } from "@/lib/content";
+import { getLocalizedProducts } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { ArrowRightIcon, CheckIcon } from "@/components/ui/icons";
 import { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
 interface Props { lang: Locale }
 
 export function ProductsGrid({ lang }: Props) {
+  const messages = getMessages(lang);
+  const localizedProducts = getLocalizedProducts(lang);
+
   return (
     <section className="py-20 lg:py-28 bg-[var(--bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <ScrollReveal animation="fade-up">
-            <span className="badge mb-4">Products</span>
+            <span className="badge mb-4">{messages.productsSection.badge}</span>
           </ScrollReveal>
           <ScrollReveal animation="fade-up" delay={100}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
-              Our Products
+              {messages.productsSection.title}
             </h2>
           </ScrollReveal>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {products.map((p, i) => (
+          {localizedProducts.map((p, i) => (
             <ScrollReveal key={p.id} animation="fade-up" delay={i * 100 + 200}>
               <div className="card p-6 lg:p-8 group h-full flex flex-col hover-lift">
                 <Badge variant="accent" size="md" className="mb-4">{p.category}</Badge>
@@ -43,10 +47,10 @@ export function ProductsGrid({ lang }: Props) {
                 </div>
                 <div className="flex flex-wrap gap-3 pt-2">
                   <Button href={"/" + lang + "/products/" + p.id} variant="outline" size="sm" icon={<ArrowRightIcon />}>
-                    View Details
+                    {messages.productsSection.viewDetails}
                   </Button>
                   <Button href={"/" + lang + "/products/" + p.id + "#book-demo"} variant="ghost" size="sm">
-                    Book Demo
+                    {messages.productsSection.bookDemo}
                   </Button>
                 </div>
               </div>
