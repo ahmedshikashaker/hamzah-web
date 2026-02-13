@@ -42,19 +42,19 @@ export function Hero({ lang }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="absolute inset-0 bg-[var(--bg-primary)]" />
-      <SpaceStarsBackground className="absolute inset-0 opacity-75" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--bg-primary)]/20 to-[var(--bg-primary)]/60" />
-      <div className="orb w-[600px] h-[600px] top-0 left-1/2 -translate-x-1/2 bg-[#A76FD9]/15" />
-      <div className="orb w-[500px] h-[500px] bottom-0 right-0 bg-[#FFB951]/10" />
+      <SpaceStarsBackground className="absolute inset-0 opacity-60 dark:opacity-75" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/8 via-[var(--bg-primary)]/42 to-[var(--bg-primary)]/88 dark:from-transparent dark:via-[var(--bg-primary)]/20 dark:to-[var(--bg-primary)]/60" />
+      <div className="orb w-[600px] h-[600px] top-0 left-1/2 -translate-x-1/2 bg-[#7d4aa3]/20 dark:bg-[#A76FD9]/15" />
+      <div className="orb w-[500px] h-[500px] bottom-0 right-0 bg-[#e7ad5a]/14 dark:bg-[#FFB951]/10" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="max-w-2xl">
             <ScrollReveal animation="fade-up">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent-soft)] border border-[var(--accent-border)] text-sm font-medium text-[#4A1F6E] dark:text-[#FFB951] mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4A1F6E] dark:bg-[#FFB951] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4A1F6E] dark:bg-[#FFB951]" />
+              <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[var(--border-strong)] bg-white/70 dark:bg-[var(--accent-soft)]/75 backdrop-blur-md text-sm font-semibold text-[var(--text-secondary)] dark:text-[#FFB951] shadow-[0_8px_22px_rgba(69,33,100,0.12)] dark:shadow-none mb-6">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)]/45 dark:bg-[#FFB951]/45" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent)] dark:bg-[#FFB951]" />
                 </span>
                 {heroContent.badge}
               </div>

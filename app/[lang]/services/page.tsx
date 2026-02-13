@@ -57,30 +57,33 @@ export default async function ServicesPage({ params }: PageProps) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {services.map((service, index) => (
-              <ScrollReveal key={service.id} animation="fade-up" delay={index * 40 + 300}>
+              <ScrollReveal
+                key={service.id}
+                animation={index % 4 === 0 ? "fade-left" : index % 4 === 3 ? "fade-right" : "fade-up"}
+                delay={index * 45 + 170}
+                distance={22}
+                duration={660}
+                rootMargin="0px 0px -10% 0px"
+              >
                 <div
                   id={service.id}
-                  className="card p-6 h-full group hover-lift"
+                  className="card p-6 h-full group"
                 >
-                  <div className="icon-container w-14 h-14 mb-5">
+                  <div className="icon-box w-14 h-14 mb-5">
                     <Icon name={service.icon} size={28} />
                   </div>
                   
-                  <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent)] transition-colors">
+                  <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[#FFB951] transition-colors">
                     {service.title}
                   </h2>
                   
-                  <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-4">
+                  <p className="text-sm text-[var(--text-secondary)] mb-4">
                     {service.description}
                   </p>
                   
                   {service.tags && (
                     <div className="flex flex-wrap gap-1.5">
-                      {service.tags.map((tag) => (
-                        <Badge key={tag} variant="default" size="sm">
-                          {tag}
-                        </Badge>
-                      ))}
+                      {service.tags.slice(0, 3).map((tag) => <Badge key={tag}>{tag}</Badge>)}
                     </div>
                   )}
                 </div>

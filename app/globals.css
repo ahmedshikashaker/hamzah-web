@@ -29,45 +29,46 @@
 }
 
 :root {
-  /* Light Mode - Subtle purple tint */
-  --bg-primary: #fdfcfe;
-  --bg-secondary: #f9f6fb;
-  --bg-tertiary: #f3eef6;
+  /* Light Mode - Editorial soft contrast */
+  --bg-primary: #f6f3fa;
+  --bg-secondary: #efe9f6;
+  --bg-tertiary: #e6ddf1;
   --bg-elevated: #ffffff;
-  --bg-muted: #efe5f6;
+  --bg-muted: #ddcdeb;
   
-  --text-primary: #1a0d20;
-  --text-secondary: #3a1847;
-  --text-muted: #5f3685;
-  --accent: #4A1F6E;
-  --accent-dark: #3a1847;
-  --secondary: #A76FD9;
-  --secondary-light: #bd90e1;
+  --text-primary: #181126;
+  --text-secondary: #2e2344;
+  --text-muted: #5a4a76;
+  --accent: #452164;
+  --accent-dark: #301544;
+  --secondary: #8f5ec0;
+  --secondary-light: #b08ad8;
   
-  --border-color: rgba(74, 31, 110, 0.1);
-  --border-strong: rgba(74, 31, 110, 0.2);
+  --border-color: rgba(69, 33, 100, 0.14);
+  --border-strong: rgba(69, 33, 100, 0.22);
   
-  --btn-primary-bg: #4A1F6E;
+  --btn-primary-bg: #452164;
   --btn-primary-text: #ffffff;
-  --btn-primary-hover: #5f3685;
+  --btn-primary-hover: #5a2e84;
   
   --btn-accent-bg: #FFB951;
   --btn-accent-text: #1a0d20;
   --btn-accent-hover: #ffc568;
   
-  --accent-soft: rgba(74, 31, 110, 0.08);
-  --accent-border: rgba(74, 31, 110, 0.15);
+  --accent-soft: rgba(69, 33, 100, 0.09);
+  --accent-border: rgba(69, 33, 100, 0.22);
   
-  --card-bg: #ffffff;
-  --card-border: rgba(74, 31, 110, 0.08);
-  --card-shadow: 0 1px 3px rgba(74, 31, 110, 0.08), 0 1px 2px rgba(74, 31, 110, 0.04);
-  --card-shadow-hover: 0 10px 20px rgba(74, 31, 110, 0.12), 0 4px 8px rgba(74, 31, 110, 0.06);
+  --card-bg: linear-gradient(160deg, rgba(255, 255, 255, 0.95) 0%, rgba(247, 240, 255, 0.97) 100%);
+  --card-border: rgba(69, 33, 100, 0.1);
+  --card-shadow: 0 10px 24px rgba(54, 30, 81, 0.08), 0 2px 8px rgba(54, 30, 81, 0.05);
+  --card-shadow-hover: 0 20px 44px rgba(54, 30, 81, 0.15), 0 8px 20px rgba(54, 30, 81, 0.08);
   
-  --header-bg: rgba(253, 252, 254, 0.95);
-  --header-border: rgba(74, 31, 110, 0.08);
+  --header-bg: rgba(246, 243, 250, 0.82);
+  --header-border: rgba(69, 33, 100, 0.12);
   
-  --gradient-start: rgba(74, 31, 110, 0.06);
-  --gradient-end: rgba(255, 185, 81, 0.04);
+  --gradient-start: rgba(120, 76, 176, 0.2);
+  --gradient-end: rgba(255, 184, 89, 0.16);
+  --gradient-focus: rgba(255, 255, 255, 0.74);
 }
 
 .dark {
@@ -110,6 +111,7 @@
   
   --gradient-start: rgba(167, 111, 217, 0.08);
   --gradient-end: rgba(255, 185, 81, 0.04);
+  --gradient-focus: rgba(255, 255, 255, 0.02);
 }
 
 * {
@@ -123,12 +125,22 @@ html {
 body {
   background-color: var(--bg-primary);
   background-image:
-    radial-gradient(circle at 14% -12%, var(--gradient-start), transparent 42%),
-    radial-gradient(circle at 88% -6%, var(--gradient-end), transparent 40%);
+    radial-gradient(circle at 12% -14%, var(--gradient-start), transparent 45%),
+    radial-gradient(circle at 88% -6%, var(--gradient-end), transparent 42%),
+    radial-gradient(circle at 52% 18%, var(--gradient-focus), transparent 58%),
+    linear-gradient(180deg, #fbf8ff 0%, var(--bg-primary) 38%, var(--bg-secondary) 100%);
   color: var(--text-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.dark body {
+  background-image:
+    radial-gradient(circle at 14% -12%, var(--gradient-start), transparent 42%),
+    radial-gradient(circle at 88% -6%, var(--gradient-end), transparent 40%),
+    radial-gradient(circle at 48% 14%, var(--gradient-focus), transparent 54%),
+    linear-gradient(180deg, #100915 0%, var(--bg-primary) 38%, var(--bg-secondary) 100%);
 }
 
 ::selection {
@@ -241,7 +253,7 @@ body {
   border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow);
   border-radius: 18px;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover {

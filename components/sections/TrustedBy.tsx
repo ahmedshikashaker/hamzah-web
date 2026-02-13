@@ -40,14 +40,14 @@ export function TrustedBy({ lang }: TrustedByProps) {
               rootMargin="0px 0px -8% 0px"
               className="h-full"
             >
-              <div className="group h-full min-h-[128px] rounded-2xl border border-[var(--border-color)] bg-[var(--card-bg)]/88 backdrop-blur-sm p-4 sm:p-5 flex flex-col items-center justify-center text-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-border)] hover:bg-[var(--bg-elevated)] hover:shadow-[var(--card-shadow-hover)]">
-                <div className="h-14 w-full max-w-[176px] flex items-center justify-center px-2">
+              <div className="group h-full min-h-[128px] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-tertiary)]/74 dark:bg-[var(--card-bg)]/88 backdrop-blur-sm p-4 sm:p-5 flex flex-col items-center justify-center text-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-border)] hover:bg-[var(--bg-tertiary)]/88 dark:hover:bg-[var(--bg-elevated)] hover:shadow-[var(--card-shadow-hover)]">
+                <div className="h-14 w-full max-w-[182px] px-2.5 flex items-center justify-center">
                   <Image
                     src={client.logoSrc}
                     alt={client.name}
                     width={client.logoWidth}
                     height={client.logoHeight}
-                    className="max-h-11 w-auto object-contain saturate-[1.12] contrast-[1.1] dark:brightness-110 dark:contrast-[1.16] transition-transform duration-300 group-hover:scale-[1.04]"
+                    className="max-h-11 w-auto object-contain brightness-[1.04] contrast-[1.15] saturate-[1.08] [filter:drop-shadow(0_1px_1px_rgba(49,30,72,0.35))] dark:[filter:none] dark:brightness-110 dark:contrast-[1.16] transition-transform duration-300 group-hover:scale-[1.04]"
                   />
                 </div>
                 <span className="text-sm font-semibold text-[var(--text-secondary)]">

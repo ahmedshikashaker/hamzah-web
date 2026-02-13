@@ -92,13 +92,13 @@ export function SpaceStarsBackground({ className = "" }: SpaceStarsBackgroundPro
       let opacityPulse = prefersReducedMotion ? 0 : 0.08;
 
       const paintPalette = (darkMode: boolean) => {
-        const start = darkMode ? new THREE.Color("#b892da") : new THREE.Color("#5f3685");
-        const mid = darkMode ? new THREE.Color("#ffe1a8") : new THREE.Color("#ab6c2a");
-        const end = darkMode ? new THREE.Color("#d5b9eb") : new THREE.Color("#824db2");
+        const start = darkMode ? new THREE.Color("#b892da") : new THREE.Color("#67439c");
+        const mid = darkMode ? new THREE.Color("#ffe1a8") : new THREE.Color("#e2ab63");
+        const end = darkMode ? new THREE.Color("#d5b9eb") : new THREE.Color("#9f73ce");
 
-        baseOpacity = prefersReducedMotion ? (darkMode ? 0.8 : 0.62) : darkMode ? 0.74 : 0.56;
-        opacityPulse = prefersReducedMotion ? 0 : darkMode ? 0.08 : 0.045;
-        material.size = isMobile ? (darkMode ? 0.18 : 0.17) : darkMode ? 0.22 : 0.21;
+        baseOpacity = prefersReducedMotion ? (darkMode ? 0.8 : 0.7) : darkMode ? 0.74 : 0.6;
+        opacityPulse = prefersReducedMotion ? 0 : darkMode ? 0.08 : 0.05;
+        material.size = isMobile ? (darkMode ? 0.18 : 0.19) : darkMode ? 0.22 : 0.23;
         material.blending = darkMode ? THREE.AdditiveBlending : THREE.NormalBlending;
         material.opacity = baseOpacity;
 
