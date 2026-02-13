@@ -323,6 +323,36 @@ body {
   border: 1px solid var(--accent-border);
 }
 
+.hero-trust-badge {
+  color: #4A1F6E;
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(159, 138, 182, 0.5);
+  box-shadow: 0 8px 22px rgba(69, 33, 100, 0.14);
+}
+
+.dark .hero-trust-badge {
+  color: #FFB951;
+  background: rgba(255, 185, 81, 0.1);
+  border-color: rgba(255, 185, 81, 0.2);
+  box-shadow: none;
+}
+
+.hero-trust-badge-dot {
+  background: #E9A338;
+}
+
+.dark .hero-trust-badge-dot {
+  background: #FFB951;
+}
+
+.hero-trust-badge-dot-ping {
+  background: rgba(255, 185, 81, 0.55);
+}
+
+.dark .hero-trust-badge-dot-ping {
+  background: rgba(255, 185, 81, 0.45);
+}
+
 /* Grid pattern */
 .grid-pattern {
   background-image: 

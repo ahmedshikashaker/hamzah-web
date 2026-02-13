@@ -51,10 +51,10 @@ export function Hero({ lang }: HeroProps) {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="max-w-2xl">
             <ScrollReveal animation="fade-up">
-              <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[var(--border-strong)] bg-white/70 dark:bg-[var(--accent-soft)]/75 backdrop-blur-md text-sm font-semibold text-[var(--text-secondary)] dark:text-[#FFB951] shadow-[0_8px_22px_rgba(69,33,100,0.12)] dark:shadow-none mb-6">
+              <div className="hero-trust-badge inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border backdrop-blur-md text-sm font-semibold mb-6">
                 <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)]/45 dark:bg-[#FFB951]/45" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent)] dark:bg-[#FFB951]" />
+                  <span className="hero-trust-badge-dot-ping animate-ping absolute inline-flex h-full w-full rounded-full" />
+                  <span className="hero-trust-badge-dot relative inline-flex rounded-full h-2.5 w-2.5" />
                 </span>
                 {heroContent.badge}
               </div>
