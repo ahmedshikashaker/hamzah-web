@@ -241,6 +241,8 @@ export const products = [
     category: "Loyalty",
     description: "Advanced loyalty management platform with Apple Wallet integration. Build lasting customer relationships.",
     features: ["Loyalty Program Management", "Customer Tracking & Profiles", "Points & Rewards System", "Apple Wallet Integration"],
+    imageSrc: "/products/loyalty-cards.jpg",
+    imageAlt: "Loyalty cards platform on mobile wallets",
     color: "magenta",
   },
   {
@@ -249,6 +251,8 @@ export const products = [
     category: "HR",
     description: "Comprehensive HR management system that streamlines operations and empowers your workforce.",
     features: ["Employee Management", "Recruitment & Onboarding", "Attendance & Time Tracking", "Payroll Integration"],
+    imageSrc: "/products/hrms.jpg",
+    imageAlt: "Human resources management workflow and team collaboration",
     color: "plum",
   },
   {
@@ -257,6 +261,8 @@ export const products = [
     category: "CRM",
     description: "Enterprise-grade CRM for businesses of all sizes. Streamline operations and boost sales productivity.",
     features: ["Lead & Opportunity Management", "Contact & Customer Management", "Activity Tracking", "Sales Automation"],
+    imageSrc: "/products/crm.jpg",
+    imageAlt: "Customer relationship management analytics dashboard",
     color: "mauve",
   },
   {
@@ -265,6 +271,8 @@ export const products = [
     category: "Education",
     description: "Complete learning management solution for creating, delivering, and tracking educational programs.",
     features: ["Online Courses", "Recorded Content", "Quizzes & Assessments", "Progress Tracking"],
+    imageSrc: "/products/lms.webp",
+    imageAlt: "Learning management system and digital classroom experience",
     color: "plum",
   },
 ];

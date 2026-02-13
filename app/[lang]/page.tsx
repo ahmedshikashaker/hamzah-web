@@ -5,7 +5,6 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { WhyHamzah } from "@/components/sections/WhyHamzah";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { ProductsGrid } from "@/components/sections/ProductsGrid";
 import { Contact } from "@/components/sections/Contact";
 import { Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
@@ -36,7 +35,6 @@ export default async function HomePage({ params }: PageProps) {
       <HowItWorks lang={locale} />
       <WhyHamzah lang={locale} />
       <ServicesGrid lang={locale} showAll={false} />
-      <ProductsGrid lang={locale} />
       <Testimonials lang={locale} />
       <Contact lang={locale} />
     </>

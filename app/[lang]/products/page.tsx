@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { getLocalizedProducts } from "@/lib/content";
 import { Contact } from "@/components/sections/Contact";
 import { Button } from "@/components/ui/Button";
@@ -58,39 +59,51 @@ export default async function ProductsPage({ params }: PageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
             {products.map((product, index) => (
               <ScrollReveal key={product.id} animation="fade-up" delay={index * 100 + 300}>
-                <div className="card p-6 lg:p-8 group hover-lift h-full flex flex-col">
-                  <div className="mb-5">
-                    <Badge variant="accent" size="md">
-                      {product.category}
-                    </Badge>
+                <div className="card group hover-lift h-full flex flex-col overflow-hidden">
+                  <div className="relative aspect-[16/9] overflow-hidden border-b border-[var(--border-color)]">
+                    <Image
+                      src={product.imageSrc}
+                      alt={product.imageAlt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <Badge variant="accent" size="md">
+                        {product.category}
+                      </Badge>
+                    </div>
                   </div>
 
-                  <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-[var(--accent)] transition-colors">
-                    {product.title}
-                  </h2>
+                  <div className="p-6 lg:p-7 flex flex-col flex-1">
+                    <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-[var(--accent)] transition-colors">
+                      {product.title}
+                    </h2>
 
-                  <p className="text-[var(--text-secondary)] leading-relaxed mb-5 text-sm">
-                    {product.description}
-                  </p>
+                    <p className="text-[var(--text-secondary)] leading-relaxed mb-5 text-sm">
+                      {product.description}
+                    </p>
 
-                  <div className="space-y-2.5 mb-6">
-                    {product.features.map((feature) => (
-                      <div key={feature} className="flex items-center gap-3">
-                        <div className="w-5 h-5 rounded-full bg-[var(--accent-soft)] flex items-center justify-center flex-shrink-0">
-                          <CheckIcon size={12} className="text-[var(--accent)]" />
+                    <div className="space-y-2.5 mb-6 flex-1">
+                      {product.features.map((feature) => (
+                        <div key={feature} className="flex items-center gap-3">
+                          <div className="w-5 h-5 rounded-full bg-[var(--accent-soft)] flex items-center justify-center flex-shrink-0">
+                            <CheckIcon size={12} className="text-[var(--accent)]" />
+                          </div>
+                          <span className="text-[var(--text-secondary)] text-sm">{feature}</span>
                         </div>
-                        <span className="text-[var(--text-secondary)] text-sm">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
 
-                  <div className="mt-auto flex flex-wrap gap-3 pt-2">
-                    <Button href={`/${locale}/products/${product.id}`} variant="outline" size="sm" icon={<ArrowRightIcon />}>
-                      {messages.productsSection.viewDetails}
-                    </Button>
-                    <Button href={`/${locale}/products/${product.id}#book-demo`} variant="ghost" size="sm">
-                      {messages.productsSection.bookDemo}
-                    </Button>
+                    <div className="mt-auto flex flex-wrap gap-3 pt-2">
+                      <Button href={`/${locale}/products/${product.id}`} variant="outline" size="sm" icon={<ArrowRightIcon />}>
+                        {messages.productsSection.viewDetails}
+                      </Button>
+                      <Button href={`/${locale}/products/${product.id}#book-demo`} variant="ghost" size="sm">
+                        {messages.productsSection.bookDemo}
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { products, getLocalizedProducts } from "@/lib/content";
 import { Contact } from "@/components/sections/Contact";
@@ -89,19 +90,34 @@ export default async function ProductDetailsPage({ params }: PageProps) {
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" delay={120}>
-              <div className="card p-6 lg:p-8">
-                <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">
-                  {messages.productDetails.whatYouGet}
-                </h2>
-                <div className="space-y-3">
-                  {product.features.map((feature) => (
-                    <div key={feature} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[var(--accent-soft)] flex items-center justify-center flex-shrink-0">
-                        <CheckIcon size={14} className="text-[var(--accent)]" />
+              <div className="space-y-5">
+                <div className="card overflow-hidden">
+                  <div className="relative aspect-[16/10]">
+                    <Image
+                      src={product.imageSrc}
+                      alt={product.imageAlt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 35vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                  </div>
+                </div>
+
+                <div className="card p-6 lg:p-8">
+                  <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">
+                    {messages.productDetails.whatYouGet}
+                  </h2>
+                  <div className="space-y-3">
+                    {product.features.map((feature) => (
+                      <div key={feature} className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-[var(--accent-soft)] flex items-center justify-center flex-shrink-0">
+                          <CheckIcon size={14} className="text-[var(--accent)]" />
+                        </div>
+                        <span className="text-sm text-[var(--text-secondary)]">{feature}</span>
                       </div>
-                      <span className="text-sm text-[var(--text-secondary)]">{feature}</span>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
