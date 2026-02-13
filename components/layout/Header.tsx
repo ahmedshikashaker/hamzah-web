@@ -16,7 +16,6 @@ interface HeaderProps {
 export function Header({ lang }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -28,21 +27,15 @@ export function Header({ lang }: HeaderProps) {
   useEffect(() => {
     const saved = localStorage.getItem("theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    if (saved === "dark" || (!saved && prefersDark)) {
-      setIsDark(true);
-      document.documentElement.classList.add("dark");
-    }
+    const shouldUseDark = saved ? saved === "dark" : prefersDark;
+    document.documentElement.classList.toggle("dark", shouldUseDark);
   }, []);
 
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    if (isDark) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
+    const root = document.documentElement;
+    const nextIsDark = !root.classList.contains("dark");
+    root.classList.toggle("dark", nextIsDark);
+    localStorage.setItem("theme", nextIsDark ? "dark" : "light");
   };
 
   const isActive = (href: string) => {
@@ -71,7 +64,7 @@ export function Header({ lang }: HeaderProps) {
                 href={getHref(item.href)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                   isActive(item.href)
-                    ? "text-[#8b5cf6] dark:text-[#f59e0b]"
+                    ? "text-[var(--accent)] bg-[var(--accent-soft)]"
                     : "text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]"
                 }`}
               >
@@ -86,7 +79,8 @@ export function Header({ lang }: HeaderProps) {
               className="p-2 rounded-lg border border-[var(--border-color)] hover:bg-[var(--bg-tertiary)] transition-colors"
               aria-label="Toggle theme"
             >
-              {isDark ? <SunIcon size={18} className="text-[var(--text-muted)]" /> : <MoonIcon size={18} className="text-[var(--text-muted)]" />}
+              <SunIcon size={18} className="hidden dark:block text-[var(--text-muted)]" />
+              <MoonIcon size={18} className="block dark:hidden text-[var(--text-muted)]" />
             </button>
 
             <div className="hidden sm:flex items-center gap-0.5 p-1 rounded-lg bg-[var(--bg-tertiary)]">
@@ -128,7 +122,7 @@ export function Header({ lang }: HeaderProps) {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-4 py-3 text-base font-medium rounded-xl transition-colors ${
                     isActive(item.href)
-                      ? "bg-[var(--accent-soft)] text-[#8b5cf6] dark:text-[#f59e0b]"
+                      ? "bg-[var(--accent-soft)] text-[var(--accent)]"
                       : "text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]"
                   }`}
                 >
@@ -137,7 +131,7 @@ export function Header({ lang }: HeaderProps) {
               ))}
               <div className="flex items-center justify-between px-4 py-3 mt-2 border-t border-[var(--border-color)]">
                 <button onClick={toggleTheme} className="text-sm text-[var(--text-muted)]">
-                  {isDark ? "Light Mode" : "Dark Mode"}
+                  Toggle Theme
                 </button>
                 <div className="flex items-center gap-0.5 p-1 rounded-lg bg-[var(--bg-tertiary)]">
                   {locales.map((l) => (

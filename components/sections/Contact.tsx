@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
@@ -9,11 +9,41 @@ import { siteConfig, serviceTypes } from "@/lib/content";
 import { MailIcon, PhoneIcon, MapPinIcon, LinkedInIcon, BehanceIcon, ArrowRightIcon, CheckIcon } from "@/components/ui/icons";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 
-interface FormData { fullName: string; email: string; company: string; serviceType: string; message: string; }
-const init: FormData = { fullName: "", email: "", company: "", serviceType: "", message: "" };
+interface ContactProps {
+  sectionId?: string;
+  badgeText?: string;
+  title?: string;
+  subtitle?: string;
+  defaultServiceType?: string;
+  defaultMessage?: string;
+  productName?: string;
+}
 
-export function Contact() {
-  const [data, setData] = useState<FormData>(init);
+interface FormData { fullName: string; email: string; company: string; serviceType: string; message: string; }
+
+const createInitialData = (defaultServiceType = "", defaultMessage = ""): FormData => ({
+  fullName: "",
+  email: "",
+  company: "",
+  serviceType: defaultServiceType,
+  message: defaultMessage,
+});
+
+export function Contact({
+  sectionId = "contact",
+  badgeText = "Get Started",
+  title = "Ready to Scale Your Team?",
+  subtitle,
+  defaultServiceType = "",
+  defaultMessage = "",
+  productName,
+}: ContactProps) {
+  const initialData = useMemo(
+    () => createInitialData(defaultServiceType, defaultMessage),
+    [defaultServiceType, defaultMessage]
+  );
+
+  const [data, setData] = useState<FormData>(initialData);
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [sent, setSent] = useState(false);
 
@@ -33,7 +63,7 @@ export function Contact() {
     ev.preventDefault();
     if (validate()) {
       setSent(true);
-      setData(init);
+      setData(initialData);
       setTimeout(() => setSent(false), 5000);
     }
   };
@@ -43,20 +73,34 @@ export function Contact() {
     if (errors[e.target.name as keyof FormData]) setErrors((p) => ({ ...p, [e.target.name]: undefined }));
   };
 
-  const options = [{ value: "", label: "Select..." }, ...serviceTypes.map((t) => ({ value: t, label: t }))];
+  const options = useMemo(() => {
+    const values = [...serviceTypes];
+    if (defaultServiceType && !values.includes(defaultServiceType)) {
+      values.unshift(defaultServiceType);
+    }
+
+    return [{ value: "", label: "Select..." }, ...values.map((t) => ({ value: t, label: t }))];
+  }, [defaultServiceType]);
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-[var(--bg-primary)]">
+    <section id={sectionId} className="py-20 lg:py-28 bg-[var(--bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <ScrollReveal animation="fade-up">
-            <span className="badge mb-4">Get Started</span>
+            <span className="badge mb-4">{badgeText}</span>
           </ScrollReveal>
           <ScrollReveal animation="fade-up" delay={100}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
-              Ready to Scale Your Team?
+              {title}
             </h2>
           </ScrollReveal>
+          {subtitle ? (
+            <ScrollReveal animation="fade-up" delay={200}>
+              <p className="text-[var(--text-secondary)] max-w-2xl mx-auto mt-4">
+                {subtitle}
+              </p>
+            </ScrollReveal>
+          ) : null}
         </div>
 
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-14">
@@ -99,13 +143,23 @@ export function Contact() {
           <div className="lg:col-span-3">
             <ScrollReveal animation="fade-up" delay={300}>
               <div className="card p-6 lg:p-8">
+                {productName ? (
+                  <div className="mb-5 rounded-xl border border-[var(--accent-border)] bg-[var(--accent-soft)] px-4 py-3">
+                    <p className="text-sm text-[var(--text-primary)]">
+                      Booking demo for <span className="font-semibold">{productName}</span>
+                    </p>
+                  </div>
+                ) : null}
+
                 {sent ? (
                   <div className="flex flex-col items-center justify-center py-12">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#A76FD9] to-[#FFB951] flex items-center justify-center mb-4">
                       <CheckIcon size={28} className="text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">Message Sent!</h3>
-                    <p className="text-[var(--text-secondary)] text-sm">We will get back to you within 24 hours.</p>
+                    <p className="text-[var(--text-secondary)] text-sm">
+                      {productName ? "Our product team will contact you with demo slots shortly." : "We will get back to you within 24 hours."}
+                    </p>
                   </div>
                 ) : (
                   <form onSubmit={submit} className="space-y-5">
@@ -118,7 +172,9 @@ export function Contact() {
                       <Select label="Service Type" name="serviceType" value={data.serviceType} onChange={onChange} options={options} error={errors.serviceType} />
                     </div>
                     <Textarea label="Message" name="message" value={data.message} onChange={onChange} placeholder="Tell us about your project..." error={errors.message} />
-                    <Button type="submit" className="w-full" size="lg" icon={<ArrowRightIcon />}>Send Message</Button>
+                    <Button type="submit" className="w-full" size="lg" icon={<ArrowRightIcon />}>
+                      {productName ? "Request Product Demo" : "Send Message"}
+                    </Button>
                   </form>
                 )}
               </div>

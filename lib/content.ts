@@ -268,6 +268,7 @@ export const careersBenefits = [
 ];
 
 export const serviceTypes = [
+  "Product Demo",
   "Staff Augmentation",
   "Software Development",
   "UI/UX Design",

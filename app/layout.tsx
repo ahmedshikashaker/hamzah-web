@@ -50,5 +50,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return (
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <body className={`${plusJakarta.variable} font-sans antialiased bg-[var(--bg-primary)] text-[var(--text-primary)]`}>
+        {children}
+      </body>
+    </html>
+  );
 }

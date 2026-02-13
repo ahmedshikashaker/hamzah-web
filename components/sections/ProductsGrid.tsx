@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { ArrowRightIcon, CheckIcon } from "@/components/ui/icons";
-import Link from "next/link";
 import { Locale } from "@/lib/i18n/config";
 
 interface Props { lang: Locale }
@@ -26,13 +25,13 @@ export function ProductsGrid({ lang }: Props) {
         <div className="grid lg:grid-cols-2 gap-6">
           {products.map((p, i) => (
             <ScrollReveal key={p.id} animation="fade-up" delay={i * 100 + 200}>
-              <div className="card p-6 lg:p-8 group">
+              <div className="card p-6 lg:p-8 group h-full flex flex-col hover-lift">
                 <Badge variant="accent" size="md" className="mb-4">{p.category}</Badge>
                 <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-[#4A1F6E] dark:group-hover:text-[#FFB951] transition-colors">
                   {p.title}
                 </h3>
                 <p className="text-sm text-[var(--text-secondary)] mb-5">{p.description}</p>
-                <div className="space-y-2 mb-6">
+                <div className="space-y-2 mb-6 flex-1">
                   {p.features.map((f) => (
                     <div key={f} className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-[var(--accent-soft)] flex items-center justify-center">
@@ -42,13 +41,13 @@ export function ProductsGrid({ lang }: Props) {
                     </div>
                   ))}
                 </div>
-                <div className="flex gap-3">
-                  <Link href={"/" + lang + "/products/" + p.id}>
-                    <Button variant="outline" size="sm" icon={<ArrowRightIcon />}>View Details</Button>
-                  </Link>
-                  <a href="#contact">
-                    <Button variant="ghost" size="sm">Book Demo</Button>
-                  </a>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <Button href={"/" + lang + "/products/" + p.id} variant="outline" size="sm" icon={<ArrowRightIcon />}>
+                    View Details
+                  </Button>
+                  <Button href={"/" + lang + "/products/" + p.id + "#book-demo"} variant="ghost" size="sm">
+                    Book Demo
+                  </Button>
                 </div>
               </div>
             </ScrollReveal>
