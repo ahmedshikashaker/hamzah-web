@@ -1,0 +1,30 @@
+import { Metadata } from "next";
+import { CareersContent } from "@/components/sections/CareersContent";
+import { Contact } from "@/components/sections/Contact";
+import { ScrollReveal } from "@/components/effects/ScrollReveal";
+
+export const metadata: Metadata = {
+  title: "Careers",
+  description: "Join our team at Hamzah LLC.",
+};
+
+export default async function CareersPage() {
+  return (
+    <>
+      <section className="py-20 lg:py-28 bg-[var(--bg-secondary)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollReveal animation="fade-up">
+            <span className="badge mb-4">Careers</span>
+          </ScrollReveal>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--text-primary)]">
+              Build Your Career With Us
+            </h1>
+          </ScrollReveal>
+        </div>
+      </section>
+      <CareersContent />
+      <Contact />
+    </>
+  );
+}

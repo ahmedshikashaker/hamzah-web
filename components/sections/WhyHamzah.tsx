@@ -1,0 +1,46 @@
+import { whyHamzah } from "@/lib/content";
+import { Icon } from "@/components/ui/icons";
+import { ScrollReveal } from "@/components/effects/ScrollReveal";
+
+export function WhyHamzah() {
+  return (
+    <section className="py-20 lg:py-28 bg-[var(--bg-secondary)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <ScrollReveal animation="fade-up">
+            <span className="badge mb-4">Why Choose Us</span>
+          </ScrollReveal>
+          <ScrollReveal animation="fade-up" delay={100}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
+              Why Hamzah LLC
+            </h2>
+          </ScrollReveal>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {whyHamzah.map((item, i) => (
+            <ScrollReveal key={i} animation="fade-up" delay={i * 60 + 200}>
+              <div className="card p-6 group">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="icon-box w-12 h-12">
+                    <Icon name={item.icon} size={24} />
+                  </div>
+                  {item.stat && (
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-gradient">{item.stat}</div>
+                      <div className="text-xs text-[var(--text-muted)]">{item.statLabel}</div>
+                    </div>
+                  )}
+                </div>
+                <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[#FFB951] transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)]">{item.description}</p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

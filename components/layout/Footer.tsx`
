@@ -1,0 +1,113 @@
+import Link from "next/link";
+import { siteConfig, navigation } from "@/lib/content";
+import { LinkedInIcon, BehanceIcon, MailIcon, PhoneIcon, MapPinIcon, ArrowRightIcon } from "@/components/ui/icons";
+import { Locale } from "@/lib/i18n/config";
+import { Button } from "@/components/ui/Button";
+import Logo from "@/components/ui/Logo";
+
+interface Props { lang: Locale }
+
+export function Footer({ lang }: Props) {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="bg-[#0d0710] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-5">
+            <Link href={`/${lang}`} className="inline-flex items-center gap-3 group">
+              <Logo className="w-10 h-10 group-hover:scale-105 transition-transform" />
+              <span className="text-xl font-bold">{siteConfig.name}</span>
+            </Link>
+            <p className="mt-5 text-[#b894d4] text-sm max-w-sm">{siteConfig.description}</p>
+            <div className="flex gap-2 mt-6">
+              <a 
+                href={siteConfig.social.linkedin} 
+                target="_blank" 
+                rel="noopener" 
+                className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-[#FFB951] transition-colors" 
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon size={16} className="text-[#b894d4] hover:text-[#0d0710]" />
+              </a>
+              <a 
+                href={siteConfig.social.behance} 
+                target="_blank" 
+                rel="noopener" 
+                className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-[#FFB951] transition-colors" 
+                aria-label="Behance"
+              >
+                <BehanceIcon size={16} className="text-[#b894d4] hover:text-[#0d0710]" />
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:col-span-3">
+            <h3 className="text-xs font-semibold uppercase tracking-wider mb-5">Quick Links</h3>
+            <ul className="space-y-3">
+              {navigation.map((item) => (
+                <li key={item.href}>
+                  <Link 
+                    href={`/${lang}${item.href === "/" ? "" : item.href}`} 
+                    className="text-[#b894d4] hover:text-[#FFB951] transition-colors flex items-center gap-2 text-sm group"
+                  >
+                    <ArrowRightIcon size={12} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-4">
+            <h3 className="text-xs font-semibold uppercase tracking-wider mb-5">Contact</h3>
+            <ul className="space-y-4">
+              <li>
+                <a 
+                  href={`mailto:${siteConfig.contact.email}`} 
+                  className="flex items-center gap-3 text-[#b894d4] hover:text-[#FFB951] transition-colors"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <MailIcon size={14} className="text-[#b894d4]" />
+                  </div>
+                  <span className="text-sm">{siteConfig.contact.email}</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`} 
+                  className="flex items-center gap-3 text-[#b894d4] hover:text-[#FFB951] transition-colors"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <PhoneIcon size={14} className="text-[#b894d4]" />
+                  </div>
+                  <span className="text-sm">{siteConfig.contact.phone}</span>
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-[#b894d4]">
+                <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                  <MapPinIcon size={14} className="text-[#b894d4]" />
+                </div>
+                <span className="text-sm">{siteConfig.contact.location}</span>
+              </li>
+            </ul>
+            <div className="mt-6">
+              <Button 
+                href="#contact" 
+                variant="outline" 
+                size="sm" 
+                className="border-[#b894d4]/30 text-[#b894d4] hover:bg-[#FFB951] hover:text-[#0d0710] hover:border-[#FFB951]"
+              >
+                Get in Touch
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-6 border-t border-white/10 text-center text-xs text-white/40">
+          &copy; {year} {siteConfig.name}. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  );
+}

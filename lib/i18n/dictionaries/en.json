@@ -1,0 +1,65 @@
+{
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "services": "Services",
+    "careers": "Careers"
+  },
+  "hero": {
+    "headline": "Hire Remote Tech Talent",
+    "subheadline": "Over 1,000 technical specialists from more than 80 countries. Find the perfect match for your team—fast.",
+    "getStarted": "Get Started",
+    "learnMore": "Our Services"
+  },
+  "trustedBy": "Trusted by leading companies",
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Our streamlined process helps you find the perfect tech talent for your needs."
+  },
+  "whyHamzah": {
+    "title": "Why Hamzah LLC",
+    "subtitle": "What sets us apart in the remote talent space."
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Hear from companies that have found their perfect tech match with Hamzah LLC."
+  },
+  "contact": {
+    "title": "Ready to find your tech match?",
+    "subtitle": "Fill out the form, and our team will get back to you within 24 hours to discuss your needs.",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "company": "Company Name",
+    "serviceType": "Service Type",
+    "selectService": "Select a service...",
+    "message": "Message",
+    "submit": "Submit",
+    "success": "Thank you! We'll be in touch within 24 hours."
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive solutions to drive your business forward",
+    "cta": "Get in Touch"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Discover our premium product range designed to meet your needs",
+    "viewDetails": "View Details",
+    "bookDemo": "Book Demo"
+  },
+  "careers": {
+    "title": "Join Our Team",
+    "subtitle": "Discover exciting career opportunities at Hamzah LLC and be part of our growing team of talented professionals.",
+    "searchPlaceholder": "Search for jobs...",
+    "noJobs": "No jobs found",
+    "noJobsMessage": "We don't have any open positions at the moment. Please check back later.",
+    "whyJoin": "Why Join Hamzah LLC?",
+    "whyJoinSubtitle": "We offer a dynamic work environment with numerous benefits and opportunities for professional growth."
+  },
+  "footer": {
+    "tagline": "Hamzah LLC connects companies with top tech talent from around the world, making remote hiring simple and effective.",
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact Us",
+    "allRightsReserved": "All rights reserved."
+  }
+}
