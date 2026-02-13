@@ -5,6 +5,7 @@ import { hero } from "@/lib/content";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { CountUp } from "@/components/effects/CountUp";
+import { SpaceStarsBackground } from "@/components/effects/SpaceStarsBackground";
 import { Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
 
@@ -41,7 +42,8 @@ export function Hero({ lang }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="absolute inset-0 bg-[var(--bg-primary)]" />
-      <div className="absolute inset-0 grid-pattern opacity-40" />
+      <SpaceStarsBackground className="absolute inset-0 opacity-75" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--bg-primary)]/20 to-[var(--bg-primary)]/60" />
       <div className="orb w-[600px] h-[600px] top-0 left-1/2 -translate-x-1/2 bg-[#A76FD9]/15" />
       <div className="orb w-[500px] h-[500px] bottom-0 right-0 bg-[#FFB951]/10" />
 

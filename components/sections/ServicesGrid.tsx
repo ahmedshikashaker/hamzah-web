@@ -22,10 +22,10 @@ export function ServicesGrid({ lang, showAll = false }: Props) {
     <section className={sectionClasses}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <ScrollReveal animation="fade-up">
+          <ScrollReveal animation="fade-up" duration={620} rootMargin="0px 0px -6% 0px">
             <span className="badge mb-4">{messages.servicesSection.badge}</span>
           </ScrollReveal>
-          <ScrollReveal animation="fade-up" delay={100}>
+          <ScrollReveal animation="fade-up" delay={120} distance={18} duration={650} rootMargin="0px 0px -6% 0px">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
               {messages.servicesSection.title}
             </h2>
@@ -34,7 +34,14 @@ export function ServicesGrid({ lang, showAll = false }: Props) {
 
         <div className={"grid gap-5 " + (showAll ? "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : "sm:grid-cols-2 lg:grid-cols-4")}>
           {list.map((s, i) => (
-            <ScrollReveal key={s.id} animation="fade-up" delay={i * 50 + 200}>
+            <ScrollReveal
+              key={s.id}
+              animation={i % 4 === 0 ? "fade-left" : i % 4 === 3 ? "fade-right" : "fade-up"}
+              delay={i * 45 + 170}
+              distance={22}
+              duration={660}
+              rootMargin="0px 0px -10% 0px"
+            >
               <Link href={"/" + lang + "/services#" + s.id} className="block h-full">
                 <div className="card p-6 h-full group">
                   <div className="icon-box w-14 h-14 mb-5">
@@ -56,7 +63,7 @@ export function ServicesGrid({ lang, showAll = false }: Props) {
         </div>
 
         {!showAll && (
-          <ScrollReveal animation="fade-up" delay={500}>
+          <ScrollReveal animation="fade-up" delay={420} distance={16} duration={620}>
             <div className="mt-10 text-center">
               <Button href={"/" + lang + "/services"} variant="outline" size="lg" icon={<ArrowRightIcon />}>
                 {messages.servicesSection.viewAll}

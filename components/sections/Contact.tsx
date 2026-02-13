@@ -95,16 +95,16 @@ export function Contact({
     <section id={sectionId} className="py-20 lg:py-28 bg-[var(--bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <ScrollReveal animation="fade-up">
+          <ScrollReveal animation="fade-up" duration={620} rootMargin="0px 0px -6% 0px">
             <span className="badge mb-4">{resolvedBadgeText}</span>
           </ScrollReveal>
-          <ScrollReveal animation="fade-up" delay={100}>
+          <ScrollReveal animation="fade-up" delay={120} distance={18} duration={650} rootMargin="0px 0px -6% 0px">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
               {resolvedTitle}
             </h2>
           </ScrollReveal>
           {resolvedSubtitle ? (
-            <ScrollReveal animation="fade-up" delay={200}>
+            <ScrollReveal animation="fade-up" delay={220} distance={18} duration={650} rootMargin="0px 0px -6% 0px">
               <p className="text-[var(--text-secondary)] max-w-2xl mx-auto mt-4">
                 {resolvedSubtitle}
               </p>
@@ -114,7 +114,7 @@ export function Contact({
 
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-14">
           <div className="lg:col-span-2 space-y-6">
-            <ScrollReveal animation="fade-up" delay={200}>
+            <ScrollReveal animation="fade-right" delay={180} distance={24} duration={680} rootMargin="0px 0px -8% 0px">
               <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-5">{messages.contact.infoTitle}</h3>
               <div className="space-y-3">
                 <a href={"mailto:" + siteConfig.contact.email} className="flex items-center gap-3 p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] hover:border-[#4A1F6E] dark:hover:border-[#FFB951] transition-colors group">
@@ -140,7 +140,7 @@ export function Contact({
                 </div>
               </div>
             </ScrollReveal>
-            <ScrollReveal animation="fade-up" delay={250}>
+            <ScrollReveal animation="fade-right" delay={250} distance={20} duration={660} rootMargin="0px 0px -8% 0px">
               <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-3">{messages.contact.followUs}</h4>
               <div className="flex gap-2">
                 <a href={siteConfig.social.linkedin} target="_blank" rel="noopener" className="icon-box w-10 h-10" aria-label="LinkedIn"><LinkedInIcon size={16} /></a>
@@ -150,7 +150,7 @@ export function Contact({
           </div>
 
           <div className="lg:col-span-3">
-            <ScrollReveal animation="fade-up" delay={300}>
+            <ScrollReveal animation="fade-left" delay={220} distance={24} duration={700} rootMargin="0px 0px -10% 0px">
               <div className="card p-6 lg:p-8">
                 {productName ? (
                   <div className="mb-5 rounded-xl border border-[var(--accent-border)] bg-[var(--accent-soft)] px-4 py-3">

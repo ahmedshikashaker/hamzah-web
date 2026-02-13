@@ -16,10 +16,10 @@ export function WhyHamzah({ lang }: WhyHamzahProps) {
     <section className="py-20 lg:py-28 bg-[var(--bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <ScrollReveal animation="fade-up">
+          <ScrollReveal animation="fade-up" duration={620} rootMargin="0px 0px -6% 0px">
             <span className="badge mb-4">{messages.whyHamzah.badge}</span>
           </ScrollReveal>
-          <ScrollReveal animation="fade-up" delay={100}>
+          <ScrollReveal animation="fade-up" delay={110} distance={18} duration={650} rootMargin="0px 0px -6% 0px">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
               {messages.whyHamzah.title}
             </h2>
@@ -28,7 +28,14 @@ export function WhyHamzah({ lang }: WhyHamzahProps) {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((item, i) => (
-            <ScrollReveal key={i} animation="fade-up" delay={i * 60 + 200}>
+            <ScrollReveal
+              key={i}
+              animation={i % 3 === 0 ? "fade-left" : i % 3 === 1 ? "fade-up" : "fade-right"}
+              delay={i * 55 + 180}
+              distance={22}
+              duration={680}
+              rootMargin="0px 0px -10% 0px"
+            >
               <div className="card p-6 group">
                 <div className="flex items-start justify-between mb-4">
                   <div className="icon-box w-12 h-12">

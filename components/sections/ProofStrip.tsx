@@ -19,7 +19,7 @@ export function ProofStrip({ lang }: ProofStripProps) {
   return (
     <section className="relative -mt-10 z-10 pb-10 lg:pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal animation="fade-up">
+        <ScrollReveal animation="scale" distance={16} duration={680} rootMargin="0px 0px -6% 0px">
           <div className="card bg-[var(--bg-elevated)]/92 backdrop-blur-sm p-6 lg:p-8">
             <div className="grid lg:grid-cols-[1.1fr_1.9fr] gap-7 lg:gap-8 items-start">
               <div>

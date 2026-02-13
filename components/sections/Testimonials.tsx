@@ -16,10 +16,10 @@ export function Testimonials({ lang }: TestimonialsProps) {
       <div className="absolute inset-0 gradient-mesh opacity-30" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 max-w-3xl mx-auto">
-          <ScrollReveal animation="fade-up">
+          <ScrollReveal animation="fade-up" duration={620} rootMargin="0px 0px -6% 0px">
             <span className="badge mb-4">{messages.testimonials.badge}</span>
           </ScrollReveal>
-          <ScrollReveal animation="fade-up" delay={100}>
+          <ScrollReveal animation="fade-up" delay={120} distance={18} duration={650} rootMargin="0px 0px -6% 0px">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
               {messages.testimonials.title}
             </h2>
@@ -28,7 +28,15 @@ export function Testimonials({ lang }: TestimonialsProps) {
 
         <div className="grid lg:grid-cols-2 gap-6 items-stretch">
           {localizedTestimonials.map((t, i) => (
-            <ScrollReveal key={i} animation="fade-up" delay={i * 100 + 200} className="h-full">
+            <ScrollReveal
+              key={i}
+              animation={i % 2 === 0 ? "fade-left" : "fade-right"}
+              delay={i * 90 + 180}
+              distance={24}
+              duration={720}
+              rootMargin="0px 0px -8% 0px"
+              className="h-full"
+            >
               <div className="card p-7 sm:p-8 group h-full min-h-[320px] flex flex-col hover-lift">
                 <div className="w-12 h-12 rounded-2xl bg-[var(--accent-soft)] border border-[var(--accent-border)] flex items-center justify-center mb-6">
                   <svg className="w-7 h-7 text-[var(--accent)]/55" viewBox="0 0 24 24" fill="currentColor">
