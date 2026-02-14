@@ -22,13 +22,9 @@ export function Footer({ lang }: FooterProps) {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-[var(--border-color)] bg-[var(--bg-tertiary)]">
-      <div className="absolute inset-0 dot-pattern opacity-40" />
-      <div className="absolute -top-24 right-0 h-80 w-80 rounded-full bg-[var(--secondary)]/15 blur-3xl" />
-      <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-[var(--accent)]/12 blur-3xl" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
-        <div className="mb-12 rounded-3xl border border-[var(--accent-border)] bg-[var(--card-bg)]/90 backdrop-blur-sm p-6 sm:p-8 lg:p-10">
+    <footer className="border-t border-[var(--border-color)] bg-[var(--bg-tertiary)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+        <div className="mb-12 rounded-3xl border border-[var(--accent-border)] bg-[var(--bg-elevated)] p-6 sm:p-8 lg:p-10">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)] mb-3">
