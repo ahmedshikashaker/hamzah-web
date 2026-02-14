@@ -55,6 +55,8 @@ export function Contact({
   const [data, setData] = useState<FormData>(initialData);
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const validate = () => {
     const e: Partial<FormData> = {};
@@ -68,18 +70,48 @@ export function Contact({
     return !Object.keys(e).length;
   };
 
-  const submit = (ev: React.FormEvent) => {
+  const submit = async (ev: React.FormEvent) => {
     ev.preventDefault();
-    if (validate()) {
+    if (!validate()) return;
+
+    setSubmitError("");
+    setSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: data.fullName,
+          email: data.email,
+          company: data.company,
+          serviceType: data.serviceType,
+          message: data.message,
+          lang,
+          productName: productName ?? null,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact request failed");
+      }
+
       setSent(true);
       setData(initialData);
       setTimeout(() => setSent(false), 5000);
+    } catch {
+      setSubmitError(messages.contact.sendError);
+    } finally {
+      setSubmitting(false);
     }
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setData((p) => ({ ...p, [e.target.name]: e.target.value }));
     if (errors[e.target.name as keyof FormData]) setErrors((p) => ({ ...p, [e.target.name]: undefined }));
+    if (submitError) setSubmitError("");
   };
 
   const options = useMemo(() => {
@@ -181,9 +213,14 @@ export function Contact({
                       <Select label={messages.contact.serviceType} name="serviceType" value={data.serviceType} onChange={onChange} options={options} error={errors.serviceType} />
                     </div>
                     <Textarea label={messages.contact.message} name="message" value={data.message} onChange={onChange} placeholder={messages.contact.messagePlaceholder} error={errors.message} />
-                    <Button type="submit" className="w-full" size="lg" icon={<ArrowRightIcon />}>
-                      {productName ? messages.contact.requestProductDemo : messages.contact.sendMessage}
+                    <Button type="submit" className="w-full" size="lg" icon={<ArrowRightIcon />} disabled={submitting}>
+                      {submitting
+                        ? messages.contact.sendingMessage
+                        : productName
+                          ? messages.contact.requestProductDemo
+                          : messages.contact.sendMessage}
                     </Button>
+                    {submitError ? <p className="text-sm text-red-500">{submitError}</p> : null}
                   </form>
                 )}
               </div>

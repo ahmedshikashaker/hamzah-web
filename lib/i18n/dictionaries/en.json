@@ -78,6 +78,8 @@
     "message": "Message",
     "messagePlaceholder": "Tell us about your project...",
     "sendMessage": "Send Message",
+    "sendingMessage": "Sending...",
+    "sendError": "Could not send your message. Please try again or email us directly.",
     "requestProductDemo": "Request Product Demo",
     "sentTitle": "Message Sent!",
     "sentBody": "We will get back to you within 24 hours.",
