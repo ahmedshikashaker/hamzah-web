@@ -19,11 +19,11 @@ export function ScrollReveal({
   className = "",
   animation = "fade-up",
   delay = 0,
-  threshold = 0.1,
+  threshold = 0.06,
   once = true,
-  distance = 28,
-  duration = 760,
-  rootMargin = "0px 0px -10% 0px",
+  distance = 20,
+  duration = 520,
+  rootMargin = "0px 0px -4% 0px",
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState<boolean | null>(null);
@@ -96,10 +96,10 @@ export function ScrollReveal({
       style={{
         opacity: shown ? 1 : 0,
         transform: shown ? "translate3d(0, 0, 0) scale(1)" : transformWhenHidden,
-        filter: shown || !shouldBlur ? "blur(0px)" : "blur(2px)",
+        filter: shown || !shouldBlur ? "blur(0px)" : "blur(1px)",
         transitionProperty: "opacity, transform, filter",
         transitionDuration: shouldTransition ? `${duration}ms` : "0ms",
-        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+        transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
         transitionDelay: shown && shouldTransition ? `${delay}ms` : "0ms",
         willChange: shouldTransition ? "opacity, transform" : "auto",
       }}

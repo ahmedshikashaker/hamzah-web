@@ -17,12 +17,12 @@ export function TrustedBy({ lang }: TrustedByProps) {
       <div className="absolute inset-0 pointer-events-none [background:radial-gradient(circle_at_10%_0%,var(--gradient-start),transparent_45%),radial-gradient(circle_at_95%_10%,var(--gradient-end),transparent_48%)] opacity-60" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
-          <ScrollReveal animation="fade-up" duration={620} rootMargin="0px 0px -6% 0px">
+          <ScrollReveal animation="fade-up" duration={480} rootMargin="0px 0px -3% 0px">
             <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
               {messages.trustedBy.title}
             </h2>
           </ScrollReveal>
-          <ScrollReveal animation="fade-up" delay={120} distance={18} duration={620} rootMargin="0px 0px -6% 0px">
+          <ScrollReveal animation="fade-up" delay={70} distance={14} duration={480} rootMargin="0px 0px -3% 0px">
             <p className="mt-3 text-sm sm:text-base text-[var(--text-muted)]">
               {messages.trustedBy.subtitle}
             </p>
@@ -34,10 +34,10 @@ export function TrustedBy({ lang }: TrustedByProps) {
             <ScrollReveal
               key={client.name}
               animation={revealPattern[i % revealPattern.length]}
-              delay={i * 55 + 80}
-              distance={20}
-              duration={660}
-              rootMargin="0px 0px -8% 0px"
+              delay={i * 35 + 60}
+              distance={16}
+              duration={500}
+              rootMargin="0px 0px -4% 0px"
               className="h-full"
             >
               <div className="group h-full min-h-[128px] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-tertiary)]/74 dark:bg-[var(--card-bg)]/88 backdrop-blur-sm p-4 sm:p-5 flex flex-col items-center justify-center text-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-border)] hover:bg-[var(--bg-tertiary)]/88 dark:hover:bg-[var(--bg-elevated)] hover:shadow-[var(--card-shadow-hover)]">

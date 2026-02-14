@@ -16,10 +16,10 @@ export function WhyHamzah({ lang }: WhyHamzahProps) {
     <section className="py-20 lg:py-28 bg-[var(--bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <ScrollReveal animation="fade-up" duration={620} rootMargin="0px 0px -6% 0px">
+          <ScrollReveal animation="fade-up" duration={480} rootMargin="0px 0px -3% 0px">
             <span className="badge mb-4">{messages.whyHamzah.badge}</span>
           </ScrollReveal>
-          <ScrollReveal animation="fade-up" delay={110} distance={18} duration={650} rootMargin="0px 0px -6% 0px">
+          <ScrollReveal animation="fade-up" delay={70} distance={14} duration={500} rootMargin="0px 0px -3% 0px">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
               {messages.whyHamzah.title}
             </h2>
@@ -31,10 +31,10 @@ export function WhyHamzah({ lang }: WhyHamzahProps) {
             <ScrollReveal
               key={i}
               animation={i % 3 === 0 ? "fade-left" : i % 3 === 1 ? "fade-up" : "fade-right"}
-              delay={i * 55 + 180}
-              distance={22}
-              duration={680}
-              rootMargin="0px 0px -10% 0px"
+              delay={i * 35 + 90}
+              distance={18}
+              duration={520}
+              rootMargin="0px 0px -5% 0px"
             >
               <div className="card p-6 group">
                 <div className="flex items-start justify-between mb-4">

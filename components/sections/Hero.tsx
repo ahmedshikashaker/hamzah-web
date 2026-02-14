@@ -60,7 +60,7 @@ export function Hero({ lang }: HeroProps) {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal animation="fade-up" delay={100}>
+            <ScrollReveal animation="fade-up" delay={60}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
                 <span className="text-[var(--text-primary)]">{heroContent.headline}</span>
                 <br />
@@ -68,13 +68,13 @@ export function Hero({ lang }: HeroProps) {
               </h1>
             </ScrollReveal>
 
-            <ScrollReveal animation="fade-up" delay={200}>
+            <ScrollReveal animation="fade-up" delay={110}>
               <p className="text-lg sm:text-xl text-[var(--text-secondary)] mb-8 leading-relaxed">
                 {heroContent.subheadline}
               </p>
             </ScrollReveal>
 
-            <ScrollReveal animation="fade-up" delay={300}>
+            <ScrollReveal animation="fade-up" delay={160}>
               <div className="flex flex-wrap gap-4 mb-10">
                 <Button href={hero.primaryCta.href} size="lg" icon={<ArrowRightIcon />}>
                   {heroContent.primaryCta.label}
@@ -85,7 +85,7 @@ export function Hero({ lang }: HeroProps) {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal animation="fade-up" delay={400}>
+            <ScrollReveal animation="fade-up" delay={220}>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
                 {heroContent.stats.map((stat, i) => (
                   <div key={i} className="text-center sm:text-left">
