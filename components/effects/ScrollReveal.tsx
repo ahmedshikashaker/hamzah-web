@@ -18,15 +18,15 @@ export function ScrollReveal({
   children,
   className = "",
   animation = "fade-up",
-  delay = 0,
-  threshold = 0.06,
+  delay: _delay = 0,
+  threshold = 0.01,
   once = true,
-  distance = 20,
-  duration = 520,
-  rootMargin = "0px 0px -4% 0px",
+  distance = 8,
+  duration = 240,
+  rootMargin = "0px 0px -2% 0px",
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState<boolean | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
@@ -45,15 +45,20 @@ export function ScrollReveal({
     const element = ref.current;
     if (!element) return;
 
+    let frameId = 0;
     if (reduceMotion) return;
 
-    let hasEntered = false;
-    let frameId = 0;
+    const initiallyInView = element.getBoundingClientRect().top <= window.innerHeight * 0.92;
+    if (initiallyInView && once) {
+      frameId = requestAnimationFrame(() => setIsVisible(true));
+      return () => {
+        window.cancelAnimationFrame(frameId);
+      };
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          hasEntered = true;
           frameId = requestAnimationFrame(() => setIsVisible(true));
           if (once) {
             observer.unobserve(element);
@@ -61,7 +66,7 @@ export function ScrollReveal({
           return;
         }
 
-        if (!hasEntered || !once) {
+        if (!once) {
           setIsVisible(false);
         }
       },
@@ -77,17 +82,19 @@ export function ScrollReveal({
   }, [once, reduceMotion, rootMargin, threshold]);
 
   const hiddenTransforms: Record<string, string> = {
-    "fade-up": `translate3d(0, ${distance}px, 0) scale(0.985)`,
+    "fade-up": `translate3d(0, ${distance}px, 0)`,
     "fade-left": `translate3d(-${distance}px, 0, 0)`,
     "fade-right": `translate3d(${distance}px, 0, 0)`,
-    "scale": "scale(0.96)",
+    "scale": "scale(0.985)",
     "fade": "none",
   };
 
   const transformWhenHidden = hiddenTransforms[animation];
-  const shouldBlur = animation !== "fade";
-  const shown = reduceMotion || isVisible !== false;
-  const shouldTransition = !reduceMotion && isVisible !== null;
+  const shown = reduceMotion || isVisible;
+  const shouldTransition = !reduceMotion;
+  void _delay;
+  const effectiveDelay = 0;
+  const effectiveDuration = Math.min(duration, 260);
 
   return (
     <div
@@ -95,13 +102,11 @@ export function ScrollReveal({
       className={className}
       style={{
         opacity: shown ? 1 : 0,
-        transform: shown ? "translate3d(0, 0, 0) scale(1)" : transformWhenHidden,
-        filter: shown || !shouldBlur ? "blur(0px)" : "blur(1px)",
-        transitionProperty: "opacity, transform, filter",
-        transitionDuration: shouldTransition ? `${duration}ms` : "0ms",
-        transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-        transitionDelay: shown && shouldTransition ? `${delay}ms` : "0ms",
-        willChange: shouldTransition ? "opacity, transform" : "auto",
+        transform: shown ? "translate3d(0, 0, 0)" : transformWhenHidden,
+        transitionProperty: "opacity, transform",
+        transitionDuration: shouldTransition ? `${effectiveDuration}ms` : "0ms",
+        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+        transitionDelay: shown && shouldTransition ? `${effectiveDelay}ms` : "0ms",
       }}
     >
       {children}
