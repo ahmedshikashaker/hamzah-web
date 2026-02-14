@@ -96,12 +96,12 @@ export function Hero({ lang }: HeroProps) {
             <div className="relative w-full aspect-square max-w-lg mx-auto">
               <div className="absolute inset-0 border border-[var(--border-color)] rounded-full opacity-60" />
               <div className="absolute inset-8 border border-[var(--accent-border)] rounded-full opacity-40" />
-              <div className="absolute inset-16 border-2 border-[#A76FD9]/30 dark:border-[#FFB951]/30 rounded-full opacity-50" />
-              <div className="absolute inset-24 bg-gradient-to-br from-[#A76FD9]/20 to-[#FFB951]/20 rounded-full flex items-center justify-center">
+              <div className="absolute inset-16 border-2 border-[#A76FD9]/30 dark:border-[var(--accent)]/28 rounded-full opacity-50" />
+              <div className="absolute inset-24 bg-gradient-to-br from-[#A76FD9]/20 dark:from-[var(--secondary)]/20 to-[#FFB951]/20 dark:to-[var(--accent)]/20 rounded-full flex items-center justify-center">
                 <div className="text-6xl font-extrabold text-gradient">H</div>
               </div>
               <div className="absolute top-10 right-10 w-16 h-16 border-2 border-[#A76FD9]/30 rotate-12 rounded-xl" />
-              <div className="absolute bottom-20 left-5 w-12 h-12 bg-[#FFB951]/20 rounded-full" />
+              <div className="absolute bottom-20 left-5 w-12 h-12 bg-[#FFB951]/20 dark:bg-[var(--accent)]/18 rounded-full" />
             </div>
           </div>
         </div>

@@ -73,7 +73,7 @@ export default async function ServicesPage({ params }: PageProps) {
                     <Icon name={service.icon} size={28} />
                   </div>
                   
-                  <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[#FFB951] transition-colors">
+                  <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[var(--accent)] transition-colors">
                     {service.title}
                   </h2>
                   

@@ -45,14 +45,14 @@ export function HowItWorks({ lang }: HowItWorksProps) {
             >
               <div className="text-center group">
                 <div className="relative inline-block mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center group-hover:border-[#4A1F6E] dark:group-hover:border-[#FFB951] transition-colors">
-                    <Icon name={iconMap[step.icon] || step.icon} className="text-[var(--text-muted)] group-hover:text-[#4A1F6E] dark:group-hover:text-[#FFB951] transition-colors" size={28} />
+                  <div className="w-16 h-16 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center group-hover:border-[#4A1F6E] dark:group-hover:border-[var(--accent)] transition-colors">
+                    <Icon name={iconMap[step.icon] || step.icon} className="text-[var(--text-muted)] group-hover:text-[#4A1F6E] dark:group-hover:text-[var(--accent)] transition-colors" size={28} />
                   </div>
-                  <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#4A1F6E] dark:bg-[#FFB951] text-white dark:text-[#0d0710] text-xs font-bold flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#4A1F6E] dark:bg-[var(--accent)] text-white dark:text-[var(--btn-primary-text)] text-xs font-bold flex items-center justify-center">
                     {step.step}
                   </span>
                 </div>
-                <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[#FFB951] transition-colors">
+                <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[var(--accent)] transition-colors">
                   {step.title}
                 </h3>
                 <p className="text-sm text-[var(--text-secondary)]">{step.description}</p>

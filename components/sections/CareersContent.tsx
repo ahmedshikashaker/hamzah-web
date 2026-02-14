@@ -37,7 +37,7 @@ export function CareersContent({ lang }: CareersContentProps) {
                 placeholder={messages.careersContent.searchPlaceholder}
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] text-sm placeholder-[var(--text-muted)] focus:outline-none focus:border-[#4A1F6E] dark:focus:border-[#FFB951]"
+                className="w-full pl-11 pr-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] text-sm placeholder-[var(--text-muted)] focus:outline-none focus:border-[#4A1F6E] dark:focus:border-[var(--accent)]"
               />
             </div>
           </ScrollReveal>
@@ -73,7 +73,7 @@ export function CareersContent({ lang }: CareersContentProps) {
                 <div className="icon-box w-14 h-14 mx-auto mb-4">
                   <Icon name={b.icon} size={26} />
                 </div>
-                <h3 className="font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[#FFB951] transition-colors">
+                <h3 className="font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[var(--accent)] transition-colors">
                   {b.title}
                 </h3>
                 <p className="text-sm text-[var(--text-secondary)]">{b.description}</p>

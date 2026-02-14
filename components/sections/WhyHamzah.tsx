@@ -48,7 +48,7 @@ export function WhyHamzah({ lang }: WhyHamzahProps) {
                     </div>
                   )}
                 </div>
-                <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[#FFB951] transition-colors">
+                <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[var(--accent)] transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-sm text-[var(--text-secondary)]">{item.description}</p>

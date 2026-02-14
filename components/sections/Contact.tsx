@@ -117,14 +117,14 @@ export function Contact({
             <ScrollReveal animation="fade-right" delay={90} distance={18} duration={520} rootMargin="0px 0px -5% 0px">
               <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-5">{messages.contact.infoTitle}</h3>
               <div className="space-y-3">
-                <a href={"mailto:" + siteConfig.contact.email} className="flex items-center gap-3 p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] hover:border-[#4A1F6E] dark:hover:border-[#FFB951] transition-colors group">
+                <a href={"mailto:" + siteConfig.contact.email} className="flex items-center gap-3 p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] hover:border-[#4A1F6E] dark:hover:border-[var(--accent)] transition-colors group">
                   <div className="icon-box w-10 h-10"><MailIcon size={16} /></div>
                   <div>
                     <span className="block text-xs text-[var(--text-muted)]">{messages.contact.email}</span>
                     <span className="text-sm font-medium text-[var(--text-primary)]">{siteConfig.contact.email}</span>
                   </div>
                 </a>
-                <a href={"tel:" + siteConfig.contact.phone.replace(/\s/g, "")} className="flex items-center gap-3 p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] hover:border-[#4A1F6E] dark:hover:border-[#FFB951] transition-colors group">
+                <a href={"tel:" + siteConfig.contact.phone.replace(/\s/g, "")} className="flex items-center gap-3 p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] hover:border-[#4A1F6E] dark:hover:border-[var(--accent)] transition-colors group">
                   <div className="icon-box w-10 h-10"><PhoneIcon size={16} /></div>
                   <div>
                     <span className="block text-xs text-[var(--text-muted)]">{messages.contact.phone}</span>
@@ -162,7 +162,7 @@ export function Contact({
 
                 {sent ? (
                   <div className="flex flex-col items-center justify-center py-12">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#A76FD9] to-[#FFB951] flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[var(--secondary)] to-[var(--accent)] flex items-center justify-center mb-4">
                       <CheckIcon size={28} className="text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">{messages.contact.sentTitle}</h3>

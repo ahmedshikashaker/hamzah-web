@@ -73,45 +73,45 @@
 
 .dark {
   /* Dark Mode - Dark purple based */
-  --bg-primary: #0d0710;
-  --bg-secondary: #1a0d20;
-  --bg-tertiary: #2a1235;
-  --bg-elevated: #3a1847;
-  --bg-muted: #201028;
+  --bg-primary: #14101b;
+  --bg-secondary: #1d1727;
+  --bg-tertiary: #281f35;
+  --bg-elevated: #312641;
+  --bg-muted: #241b31;
   
-  --text-primary: #ffffff;
-  --text-secondary: #e8ddf2;
-  --text-muted: #b894d4;
-  --accent: #FFB951;
-  --accent-dark: #f5a335;
-  --secondary: #A76FD9;
-  --secondary-light: #c59ee7;
+  --text-primary: #f7f3fb;
+  --text-secondary: #d8cde8;
+  --text-muted: #aa9abb;
+  --accent: #e2b37a;
+  --accent-dark: #c89762;
+  --secondary: #9881bf;
+  --secondary-light: #b19ccf;
   
-  --border-color: rgba(255, 255, 255, 0.06);
-  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
   
-  --btn-primary-bg: #FFB951;
-  --btn-primary-text: #1a0d20;
-  --btn-primary-hover: #ffc568;
+  --btn-primary-bg: #e2b37a;
+  --btn-primary-text: #1a1421;
+  --btn-primary-hover: #eac090;
   
-  --btn-accent-bg: #A76FD9;
-  --btn-accent-text: #ffffff;
-  --btn-accent-hover: #b894d4;
+  --btn-accent-bg: #9881bf;
+  --btn-accent-text: #f7f3fb;
+  --btn-accent-hover: #ac99cd;
   
-  --accent-soft: rgba(255, 185, 81, 0.1);
-  --accent-border: rgba(255, 185, 81, 0.2);
+  --accent-soft: rgba(226, 179, 122, 0.12);
+  --accent-border: rgba(226, 179, 122, 0.24);
   
-  --card-bg: rgba(26, 13, 32, 0.8);
+  --card-bg: rgba(31, 24, 42, 0.84);
   --card-border: rgba(255, 255, 255, 0.04);
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
   --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3);
   
-  --header-bg: rgba(13, 7, 16, 0.95);
+  --header-bg: rgba(20, 16, 27, 0.9);
   --header-border: rgba(255, 255, 255, 0.04);
   
-  --gradient-start: rgba(167, 111, 217, 0.08);
-  --gradient-end: rgba(255, 185, 81, 0.04);
-  --gradient-focus: rgba(255, 255, 255, 0.02);
+  --gradient-start: rgba(152, 129, 191, 0.1);
+  --gradient-end: rgba(226, 179, 122, 0.07);
+  --gradient-focus: rgba(255, 255, 255, 0.03);
 }
 
 * {
@@ -140,7 +140,7 @@ body {
     radial-gradient(circle at 14% -12%, var(--gradient-start), transparent 42%),
     radial-gradient(circle at 88% -6%, var(--gradient-end), transparent 40%),
     radial-gradient(circle at 48% 14%, var(--gradient-focus), transparent 54%),
-    linear-gradient(180deg, #100915 0%, var(--bg-primary) 38%, var(--bg-secondary) 100%);
+    linear-gradient(180deg, #171221 0%, var(--bg-primary) 38%, var(--bg-secondary) 100%);
 }
 
 ::selection {
@@ -175,6 +175,13 @@ body {
 /* Text gradient */
 .text-gradient {
   background: linear-gradient(135deg, #A76FD9 0%, #FFB951 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .text-gradient {
+  background: linear-gradient(135deg, #b9a1dc 0%, #e2b37a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -313,8 +320,8 @@ body {
 
 .dark .badge {
   color: var(--accent);
-  background: rgba(255, 185, 81, 0.1);
-  border-color: rgba(255, 185, 81, 0.2);
+  background: rgba(226, 179, 122, 0.12);
+  border-color: rgba(226, 179, 122, 0.24);
 }
 
 .badge-accent {
@@ -331,9 +338,9 @@ body {
 }
 
 .dark .hero-trust-badge {
-  color: #FFB951;
-  background: rgba(255, 185, 81, 0.1);
-  border-color: rgba(255, 185, 81, 0.2);
+  color: #e2b37a;
+  background: rgba(226, 179, 122, 0.12);
+  border-color: rgba(226, 179, 122, 0.26);
   box-shadow: none;
 }
 
@@ -342,7 +349,7 @@ body {
 }
 
 .dark .hero-trust-badge-dot {
-  background: #FFB951;
+  background: #e2b37a;
 }
 
 .hero-trust-badge-dot-ping {
@@ -350,7 +357,7 @@ body {
 }
 
 .dark .hero-trust-badge-dot-ping {
-  background: rgba(255, 185, 81, 0.45);
+  background: rgba(226, 179, 122, 0.45);
 }
 
 /* Grid pattern */
@@ -404,7 +411,7 @@ body {
 }
 
 .dark .icon-box:hover {
-  background: #FFB951;
+  background: #e2b37a;
 }
 
 .icon-box svg {
@@ -413,7 +420,7 @@ body {
 }
 
 .dark .icon-box svg {
-  color: #FFB951;
+  color: #e2b37a;
 }
 
 .icon-box:hover svg {
@@ -474,8 +481,8 @@ input:focus, textarea:focus, select:focus {
 .dark input:focus,
 .dark textarea:focus,
 .dark select:focus {
-  border-color: #FFB951;
-  box-shadow: 0 0 0 3px rgba(255, 185, 81, 0.1);
+  border-color: #e2b37a;
+  box-shadow: 0 0 0 3px rgba(226, 179, 122, 0.14);
 }
 
 input::placeholder, textarea::placeholder {

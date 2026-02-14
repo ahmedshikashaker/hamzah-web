@@ -47,7 +47,7 @@ export function ServicesGrid({ lang, showAll = false }: Props) {
                   <div className="icon-box w-14 h-14 mb-5">
                     <Icon name={s.icon} size={28} />
                   </div>
-                  <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[#FFB951] transition-colors">
+                  <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[#4A1F6E] dark:group-hover:text-[var(--accent)] transition-colors">
                     {s.title}
                   </h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-4">{s.description}</p>

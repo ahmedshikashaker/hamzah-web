@@ -48,7 +48,7 @@ export function Testimonials({ lang }: TestimonialsProps) {
                 </p>
 
                 <div className="flex items-center gap-4 pt-5 border-t border-[var(--border-color)]">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#A76FD9] to-[#FFB951] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--secondary)] to-[var(--accent)] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                     {t.avatar}
                   </div>
                   <div className="min-w-0">
