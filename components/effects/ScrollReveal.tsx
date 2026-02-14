@@ -1,5 +1,3 @@
-"use client";
-
 interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;

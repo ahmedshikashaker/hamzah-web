@@ -377,7 +377,7 @@ body {
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(44px);
   pointer-events: none;
 }
 

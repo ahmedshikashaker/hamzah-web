@@ -12,8 +12,7 @@ export function Testimonials({ lang }: TestimonialsProps) {
   const localizedTestimonials = getLocalizedTestimonials(lang);
 
   return (
-    <section className="relative py-20 lg:py-28 bg-[var(--bg-primary)] overflow-hidden">
-      <div className="absolute inset-0 gradient-mesh opacity-30" />
+    <section className="py-20 lg:py-28 bg-[var(--bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 max-w-3xl mx-auto">
           <ScrollReveal animation="fade-up" duration={480} rootMargin="0px 0px -3% 0px">

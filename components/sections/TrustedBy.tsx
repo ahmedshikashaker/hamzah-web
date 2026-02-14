@@ -14,7 +14,6 @@ export function TrustedBy({ lang }: TrustedByProps) {
 
   return (
     <section className="relative py-16 lg:py-20 bg-[var(--bg-secondary)] overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none [background:radial-gradient(circle_at_10%_0%,var(--gradient-start),transparent_45%),radial-gradient(circle_at_95%_10%,var(--gradient-end),transparent_48%)] opacity-60" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
           <ScrollReveal animation="fade-up" duration={480} rootMargin="0px 0px -3% 0px">
@@ -40,14 +39,14 @@ export function TrustedBy({ lang }: TrustedByProps) {
               rootMargin="0px 0px -4% 0px"
               className="h-full"
             >
-              <div className="group h-full min-h-[128px] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-tertiary)]/74 dark:bg-[var(--card-bg)]/88 backdrop-blur-sm p-4 sm:p-5 flex flex-col items-center justify-center text-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-border)] hover:bg-[var(--bg-tertiary)]/88 dark:hover:bg-[var(--bg-elevated)] hover:shadow-[var(--card-shadow-hover)]">
+              <div className="group h-full min-h-[128px] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-tertiary)] p-4 sm:p-5 flex flex-col items-center justify-center text-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent-border)] hover:bg-[var(--bg-elevated)] hover:shadow-[var(--card-shadow-hover)]">
                 <div className="h-14 w-full max-w-[182px] px-2.5 flex items-center justify-center">
                   <Image
                     src={client.logoSrc}
                     alt={client.name}
                     width={client.logoWidth}
                     height={client.logoHeight}
-                    className="max-h-11 w-auto object-contain brightness-[1.04] contrast-[1.15] saturate-[1.08] [filter:drop-shadow(0_1px_1px_rgba(49,30,72,0.35))] dark:[filter:none] dark:brightness-110 dark:contrast-[1.16] transition-transform duration-300 group-hover:scale-[1.04]"
+                    className="max-h-11 w-auto object-contain brightness-[1.04] contrast-[1.15] saturate-[1.08] dark:brightness-110 dark:contrast-[1.16] transition-transform duration-300 group-hover:scale-[1.04]"
                   />
                 </div>
                 <span className="text-sm font-semibold text-[var(--text-secondary)]">

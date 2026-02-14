@@ -1,10 +1,7 @@
-"use client";
-
 import { Button } from "@/components/ui/Button";
 import { hero } from "@/lib/content";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
-import { CountUp } from "@/components/effects/CountUp";
 import { SpaceStarsBackground } from "@/components/effects/SpaceStarsBackground";
 import { Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
@@ -43,15 +40,13 @@ export function Hero({ lang }: HeroProps) {
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="absolute inset-0 bg-[var(--bg-primary)]" />
       <SpaceStarsBackground className="absolute inset-0 opacity-60 dark:opacity-75" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/8 via-[var(--bg-primary)]/42 to-[var(--bg-primary)]/88 dark:from-transparent dark:via-[var(--bg-primary)]/20 dark:to-[var(--bg-primary)]/60" />
-      <div className="orb w-[600px] h-[600px] top-0 left-1/2 -translate-x-1/2 bg-[#7d4aa3]/20 dark:bg-[#A76FD9]/15" />
-      <div className="orb w-[500px] h-[500px] bottom-0 right-0 bg-[#e7ad5a]/14 dark:bg-[#FFB951]/10" />
+      <div className="absolute inset-0 bg-[var(--bg-primary)]/38 dark:bg-[var(--bg-primary)]/26" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="max-w-2xl">
             <ScrollReveal animation="fade-up">
-              <div className="hero-trust-badge inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border backdrop-blur-md text-sm font-semibold mb-6">
+              <div className="hero-trust-badge inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border text-sm font-semibold mb-6">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="hero-trust-badge-dot-ping animate-ping absolute inline-flex h-full w-full rounded-full" />
                   <span className="hero-trust-badge-dot relative inline-flex rounded-full h-2.5 w-2.5" />
@@ -89,16 +84,7 @@ export function Hero({ lang }: HeroProps) {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
                 {heroContent.stats.map((stat, i) => (
                   <div key={i} className="text-center sm:text-left">
-                    <div className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] counter">
-                      {stat.value.includes("+") ? (
-                        <>
-                          <CountUp end={parseInt(stat.value.replace(/\D/g, ""))} duration={2500} />
-                          {stat.value.includes("+") && "+"}
-                          {stat.value.includes("h") && "h"}
-                          {stat.value.includes("%") && "%"}
-                        </>
-                      ) : stat.value}
-                    </div>
+                    <div className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] counter">{stat.value}</div>
                     <div className="text-sm text-[var(--text-muted)] mt-1">{stat.label}</div>
                   </div>
                 ))}
@@ -108,20 +94,20 @@ export function Hero({ lang }: HeroProps) {
 
           <div className="hidden lg:block relative">
             <div className="relative w-full aspect-square max-w-lg mx-auto">
-              <div className="absolute inset-0 border border-[var(--border-color)] rounded-full animate-float opacity-60" />
-              <div className="absolute inset-8 border border-[var(--accent-border)] rounded-full animate-float opacity-40" style={{ animationDelay: "1s" }} />
-              <div className="absolute inset-16 border-2 border-[#A76FD9]/30 dark:border-[#FFB951]/30 rounded-full animate-float opacity-50" style={{ animationDelay: "2s" }} />
+              <div className="absolute inset-0 border border-[var(--border-color)] rounded-full opacity-60" />
+              <div className="absolute inset-8 border border-[var(--accent-border)] rounded-full opacity-40" />
+              <div className="absolute inset-16 border-2 border-[#A76FD9]/30 dark:border-[#FFB951]/30 rounded-full opacity-50" />
               <div className="absolute inset-24 bg-gradient-to-br from-[#A76FD9]/20 to-[#FFB951]/20 rounded-full flex items-center justify-center">
                 <div className="text-6xl font-extrabold text-gradient">H</div>
               </div>
-              <div className="absolute top-10 right-10 w-16 h-16 border-2 border-[#A76FD9]/30 rotate-12 rounded-xl animate-float" style={{ animationDelay: "0.5s" }} />
-              <div className="absolute bottom-20 left-5 w-12 h-12 bg-[#FFB951]/20 rounded-full animate-float" style={{ animationDelay: "1.5s" }} />
+              <div className="absolute top-10 right-10 w-16 h-16 border-2 border-[#A76FD9]/30 rotate-12 rounded-xl" />
+              <div className="absolute bottom-20 left-5 w-12 h-12 bg-[#FFB951]/20 rounded-full" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--bg-secondary)] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-[var(--bg-secondary)]/35" />
     </section>
   );
 }
